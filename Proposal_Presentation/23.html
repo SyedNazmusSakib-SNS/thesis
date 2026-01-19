@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Report Generation (Autoregressive)
+  </title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Roboto:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet"/>
+  <style>
+   body {
+            margin: 0;
+            padding: 0;
+            background-color: #f3f4f6;
+            font-family: 'Roboto', sans-serif;
+            overflow: hidden;
+        }
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            background-color: #ffffff;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+        }
+        .header-bg {
+            background-color: #0f172a; /* Navy Blue */
+        }
+        .text-accent-teal {
+            color: #0d9488;
+        }
+        .bg-accent-teal {
+            background-color: #0d9488;
+        }
+        
+        /* Flow Diagram Styling */
+        .flow-step {
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 10;
+        }
+        .flow-step:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .arrow-connector {
+            position: relative;
+            height: 4px;
+            background-color: #cbd5e1;
+            flex: 1;
+            margin: 0 10px;
+            border-radius: 2px;
+        }
+        
+        .arrow-connector::after {
+            content: '';
+            position: absolute;
+            right: -2px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0; 
+            height: 0; 
+            border-top: 8px solid transparent;
+            border-bottom: 8px solid transparent;
+            border-left: 12px solid #cbd5e1;
+        }
+        
+        .pulse-ring {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            border-radius: 9999px;
+            border: 2px solid #0d9488;
+            opacity: 0;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: translate(-50%, -50%) scale(0.95);
+                opacity: 0.7;
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1.3);
+                opacity: 0;
+            }
+        }
+        
+        .tech-pill {
+            display: inline-flex;
+            align-items: center;
+            padding: 4px 12px;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            background-color: #f1f5f9;
+            color: #475569;
+            border: 1px solid #e2e8f0;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+  </style>
+ </head>
+ <body>
+  <div class="slide-container">
+   <!-- Header -->
+   <div class="header-bg w-full h-24 px-16 flex items-center justify-between shadow-md z-20 flex-shrink-0">
+    <div class="flex items-center space-x-4">
+     <div class="w-12 h-1 bg-teal-500 rounded-full">
+     </div>
+     <h1 class="text-3xl font-bold text-white tracking-wide">
+      Report Generation (Autoregressive)
+     </h1>
+    </div>
+    <div class="text-gray-400 text-sm font-medium">
+     Methodology | Slide 23
+    </div>
+   </div>
+   
+   <!-- Main Content -->
+   <div class="flex flex-col flex-1 w-full h-full p-12 bg-white relative z-10">
+    <!-- Top Section: Context -->
+    <div class="flex justify-between mb-10 space-x-8">
+     <!-- Logic Card -->
+     <div class="w-1/2 bg-gray-50 border-l-4 border-blue-500 p-6 rounded-r-lg shadow-sm">
+      <h3 class="text-lg font-bold text-gray-800 mb-2 flex items-center">
+       <i class="fas fa-microchip text-blue-500 mr-2">
+       </i>
+       The Decoder Mechanism
+      </h3>
+      <p class="text-gray-600 text-sm leading-relaxed">
+       A Transformer decoder generates the report token-by-token. It is conditioned on the fused multimodal context
+       <strong>
+        H
+       </strong>
+       (visual + graph + history) to maximize the probability:
+       <span class="block mt-1 font-mono text-blue-800 bg-blue-50 px-2 py-1 rounded w-max">
+        p(y
+        <sub>
+         t
+        </sub>
+        | y
+        <sub>
+         &lt;t
+        </sub>
+        , H)
+       </span>
+      </p>
+     </div>
+     <!-- Strategy Card -->
+     <div class="w-1/2 bg-teal-50 border-l-4 border-teal-500 p-6 rounded-r-lg shadow-sm">
+      <h3 class="text-lg font-bold text-teal-800 mb-2 flex items-center">
+       <i class="fas fa-random text-teal-500 mr-2">
+       </i>
+       Candidate Sampling Strategy
+      </h3>
+      <p class="text-teal-700 text-sm leading-relaxed">
+       Instead of generating a single deterministic report, we produce
+       <strong>
+        K candidates
+       </strong>
+       using beam search. This diversity ensures we capture potential variations in clinical interpretation for downstream verification.
+      </p>
+     </div>
+    </div>
+    <!-- Configuration Pills -->
+    <div class="mb-8">
+     <p class="text-sm font-bold text-gray-500 uppercase tracking-wider mb-3">
+      Generation Parameters:
+     </p>
+     <div class="flex flex-wrap">
+      <div class="tech-pill bg-blue-50 text-blue-700 border-blue-200">
+       <i class="fas fa-layer-group mr-2 text-blue-500">
+       </i>
+       Input: Fused Context H
+      </div>
+      <div class="tech-pill bg-purple-50 text-purple-700 border-purple-200">
+       <i class="fas fa-project-diagram mr-2 text-purple-500">
+       </i>
+       Beam Size: K=5
+      </div>
+      <div class="tech-pill bg-indigo-50 text-indigo-700 border-indigo-200">
+       <i class="fas fa-stopwatch mr-2 text-indigo-500">
+       </i>
+       Autoregressive Steps
+      </div>
+     </div>
+    </div>
+    <!-- Process Flow Diagram Container -->
+    <div class="flex-1 bg-white border border-gray-200 rounded-xl p-8 relative flex flex-col justify-center shadow-inner bg-opacity-50">
+     <!-- The Flow -->
+     <div class="flex items-center justify-between px-8 relative">
+      <!-- Step 1: Fused Context -->
+      <div class="flow-step flex flex-col items-center group w-40">
+       <div class="w-20 h-20 bg-blue-600 rounded-xl shadow-lg flex items-center justify-center mb-4 text-white text-3xl z-10 relative">
+        <i class="fas fa-cube">
+        </i>
+        <div class="absolute -bottom-2 -right-2 w-8 h-8 bg-blue-800 rounded-full flex items-center justify-center text-xs font-bold border-2 border-white">
+         H
+        </div>
+       </div>
+       <h4 class="font-bold text-gray-800 text-lg">
+        Context
+       </h4>
+       <p class="text-center text-xs text-gray-500 mt-2 px-2">
+        Multimodal Embeddings
+       </p>
+      </div>
+      <!-- Arrow 1 -->
+      <div class="arrow-connector">
+      </div>
+      <!-- Step 2: Decoder Engine -->
+      <div class="flow-step flex flex-col items-center group w-48 relative">
+       <div class="absolute top-8 left-1/2 transform -translate-x-1/2 w-24 h-24 rounded-full border-2 border-blue-200 opacity-20 animate-pulse">
+       </div>
+       <div class="w-24 h-24 bg-white border-4 border-blue-500 rounded-full flex items-center justify-center mb-4 shadow-xl z-10 relative">
+        <i class="fas fa-network-wired text-blue-600 text-4xl">
+        </i>
+       </div>
+       <h4 class="font-bold text-blue-900 text-lg">
+        Transformer Decoder
+       </h4>
+       <p class="text-center text-xs text-blue-600 mt-2 font-medium bg-blue-50 px-3 py-1 rounded-full border border-blue-100">
+        p(y
+        <sub>
+         t
+        </sub>
+        | y
+        <sub>
+         &lt;t
+        </sub>
+        )
+       </p>
+      </div>
+      <!-- Arrow 2 -->
+      <div class="arrow-connector bg-teal-200">
+      </div>
+      <!-- Step 3: Distribution -->
+      <div class="flow-step flex flex-col items-center group w-40 opacity-90">
+       <div class="w-20 h-20 bg-teal-100 border-2 border-teal-300 rounded-lg flex flex-col items-center justify-center mb-4 shadow-sm relative">
+        <i class="fas fa-chart-bar text-teal-600 text-3xl">
+        </i>
+       </div>
+       <h4 class="font-bold text-teal-800 text-sm">
+        Probabilities
+       </h4>
+       <p class="text-center text-xs text-teal-600 mt-1">
+        Token Distribution
+       </p>
+      </div>
+      <!-- Arrow 3 -->
+      <div class="arrow-connector bg-teal-200">
+      </div>
+      <!-- Step 4: K Candidates -->
+      <div class="flow-step flex flex-col items-center group w-48">
+       <div class="w-24 h-24 bg-gradient-to-br from-teal-500 to-emerald-600 rounded-lg shadow-lg flex items-center justify-center mb-4 relative overflow-hidden border border-teal-600">
+        <!-- Stacked Papers Effect -->
+        <div class="absolute top-2 left-2 w-16 h-16 bg-white opacity-20 rounded transform rotate-3">
+        </div>
+        <div class="absolute top-2 left-2 w-16 h-16 bg-white opacity-40 rounded transform -rotate-3">
+        </div>
+        <i class="fas fa-files text-white text-4xl relative z-10">
+        </i>
+        <div class="absolute -top-2 -right-2 w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center text-yellow-900 font-bold border-2 border-white shadow text-xs">
+         K=5
+        </div>
+       </div>
+       <h4 class="font-bold text-gray-800 text-lg">
+        Candidates
+       </h4>
+       <p class="text-center text-xs text-green-600 mt-2 font-bold flex items-center">
+        <i class="fas fa-list-ol mr-1">
+        </i>
+        Generated Reports
+       </p>
+      </div>
+     </div>
+     <!-- Note -->
+     <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2 text-xs text-gray-400 font-mono bg-white px-2">
+      Output: 5 diverse report drafts for verification module
+     </div>
+    </div>
+   </div>
+   <!-- Footer Decoration -->
+   <div class="absolute bottom-0 w-full h-3 flex z-20">
+    <div class="h-full w-1/3 bg-blue-900">
+    </div>
+    <div class="h-full w-1/3 bg-teal-600">
+    </div>
+    <div class="h-full w-1/3 bg-blue-800">
+    </div>
+   </div>
+  </div>
+ </body>
+</html>

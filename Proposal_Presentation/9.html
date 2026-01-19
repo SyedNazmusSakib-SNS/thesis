@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Literature Review: Evolution of Medical VLMs
+  </title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Roboto:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet"/>
+  <style>
+   body {
+            margin: 0;
+            padding: 0;
+            background-color: #f3f4f6;
+            font-family: 'Roboto', sans-serif;
+            overflow: hidden;
+        }
+
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            background-color: #ffffff;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .header-bg {
+            background-color: #0f172a;
+            /* Navy Blue */
+        }
+
+        .section-banner {
+            background-color: #0d9488;
+            /* Teal */
+        }
+
+        .era-card {
+            border-left: 4px solid #cbd5e1;
+            transition: all 0.3s ease;
+        }
+
+        .era-card.active {
+            border-left-color: #0d9488;
+            background-color: #f0fdfa;
+        }
+
+        .placeholder-box {
+            background-color: #f8fafc;
+            border: 2px dashed #cbd5e1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #64748b;
+        }
+  </style>
+ </head>
+ <body>
+  <div class="slide-container">
+   <!-- Header -->
+   <div class="header-bg w-full h-24 px-16 flex items-center justify-between shadow-md z-20 flex-shrink-0">
+    <div class="flex items-center space-x-4">
+     <div class="w-12 h-1 bg-teal-500 rounded-full">
+     </div>
+     <h1 class="text-3xl font-bold text-white tracking-wide">
+      Evolution of Medical VLMs
+     </h1>
+    </div>
+    <div class="text-gray-400 text-sm font-medium">
+     Literature Review | Slide 9
+    </div>
+   </div>
+   
+   <!-- Main Content -->
+   <div class="flex flex-1 w-full h-full p-12 space-x-12 bg-white relative z-0">
+    <!-- Left Column: Content Narrative (45%) -->
+    <div class="w-5/12 flex flex-col justify-center space-y-8 pr-4">
+     <!-- Era 1 -->
+     <div class="era-card p-5 rounded-r-lg">
+      <div class="flex items-center mb-2">
+       <span class="bg-gray-200 text-gray-700 text-xs font-bold px-2 py-1 rounded uppercase mr-3">
+        Early
+                            Era
+       </span>
+       <h3 class="text-xl font-bold text-gray-800">
+        CNN Encoders + RNN Decoders
+       </h3>
+      </div>
+      <p class="text-gray-600 text-sm leading-relaxed mb-2">
+       Models like
+       <strong>
+        TieNet
+       </strong>
+       focused on simple image-to-text translation.
+      </p>
+      <div class="flex items-center text-sm">
+       <span class="text-green-600 font-medium mr-4">
+        <i class="fas fa-check mr-1">
+        </i>
+        Good
+                            Fluency
+       </span>
+       <span class="text-red-500 font-medium">
+        <i class="fas fa-times mr-1">
+        </i>
+        Poor Reasoning
+       </span>
+      </div>
+     </div>
+     <!-- Era 2 -->
+     <div class="era-card p-5 rounded-r-lg">
+      <div class="flex items-center mb-2">
+       <span class="bg-blue-100 text-blue-800 text-xs font-bold px-2 py-1 rounded uppercase mr-3">
+        Transformer
+                            Era
+       </span>
+       <h3 class="text-xl font-bold text-gray-800">
+        Self-Attention Mechanisms
+       </h3>
+      </div>
+      <p class="text-gray-600 text-sm leading-relaxed mb-2">
+       Models like
+       <strong>
+        CheXagent
+       </strong>
+       &amp;
+       <strong>
+        LLaVA-Rad
+       </strong>
+       improved global context
+                        understanding.
+      </p>
+      <div class="flex items-center text-sm">
+       <span class="text-green-600 font-medium mr-4">
+        <i class="fas fa-check mr-1">
+        </i>
+        Better
+                            Context
+       </span>
+       <span class="text-red-500 font-medium">
+        <i class="fas fa-times mr-1">
+        </i>
+        Still
+                            "Captioning"
+       </span>
+      </div>
+     </div>
+     <!-- Era 3 (Current Limitation) -->
+     <div class="era-card active p-5 rounded-r-lg border-l-4 border-teal-500 bg-teal-50 shadow-sm">
+      <div class="flex items-center mb-2">
+       <span class="bg-teal-200 text-teal-900 text-xs font-bold px-2 py-1 rounded uppercase mr-3">
+        The
+                            Gap
+       </span>
+       <h3 class="text-xl font-bold text-teal-900">
+        Lack of Clinical Logic
+       </h3>
+      </div>
+      <p class="text-teal-800 text-sm leading-relaxed">
+       While fluent, these models largely perform sophisticated
+       <span class="font-bold">
+        image
+                            captioning
+       </span>
+       rather than true longitudinal diagnostic reasoning.
+      </p>
+     </div>
+    </div>
+    <!-- Right Column: Visual Timeline Placeholder (55%) -->
+    <div class="w-7/12 h-full py-4 pl-4 relative">
+     <div class="placeholder-box w-full h-full rounded-xl border-2 border-dashed border-gray-300 bg-gray-50 relative overflow-hidden group hover:border-blue-400 transition-colors">
+      <!-- Placeholder Label -->
+      <div class="absolute top-4 right-4 bg-white border border-gray-200 text-gray-400 text-xs font-mono px-2 py-1 rounded shadow-sm">
+       VISUAL PLACEHOLDER: EVOLUTION TIMELINE
+      </div>
+      <!-- Abstract Representation of Timeline -->
+      <div class="w-3/4 flex items-center justify-between relative z-10">
+       <!-- Step 1 -->
+       <div class="flex flex-col items-center opacity-60">
+        <div class="w-16 h-16 bg-gray-300 rounded-full flex items-center justify-center mb-3 text-white text-2xl">
+         <i class="fas fa-layer-group">
+         </i>
+        </div>
+        <p class="text-gray-500 font-bold text-sm">
+         CNN-RNN
+        </p>
+       </div>
+       <!-- Arrow -->
+       <div class="flex-1 h-1 bg-gray-300 mx-4 relative">
+        <i class="fas fa-chevron-right absolute right-0 -top-1.5 text-gray-300">
+        </i>
+       </div>
+       <!-- Step 2 -->
+       <div class="flex flex-col items-center opacity-80">
+        <div class="w-16 h-16 bg-blue-400 rounded-full flex items-center justify-center mb-3 text-white text-2xl">
+         <i class="fas fa-robot">
+         </i>
+        </div>
+        <p class="text-blue-600 font-bold text-sm">
+         Transformers
+        </p>
+       </div>
+       <!-- Arrow -->
+       <div class="flex-1 h-1 bg-gray-300 mx-4 relative">
+        <i class="fas fa-chevron-right absolute right-0 -top-1.5 text-gray-300">
+        </i>
+       </div>
+       <!-- Step 3 (Target) -->
+       <div class="flex flex-col items-center">
+        <div class="w-20 h-20 bg-teal-500 rounded-full flex items-center justify-center mb-3 text-white text-3xl shadow-lg transform scale-110">
+         <i class="fas fa-brain">
+         </i>
+        </div>
+        <p class="text-teal-700 font-bold text-base">
+         This Work
+        </p>
+        <span class="text-xs text-teal-600 bg-teal-100 px-2 py-0.5 rounded mt-1">
+         Structured
+                                Reasoning
+        </span>
+       </div>
+      </div>
+      <p class="mt-10 text-gray-500 text-sm max-w-md text-center">
+       Place a timeline graphic here illustrating the progression from:
+       <br/>
+       <strong>
+        CNN-RNN → Transformers/LLMs → ? (Your Thesis)
+       </strong>
+      </p>
+      <!-- Background Elements -->
+      <div class="absolute inset-0 opacity-5 pointer-events-none">
+       <div class="absolute top-10 left-10 w-32 h-32 border-4 border-gray-300 rounded-full">
+       </div>
+       <div class="absolute bottom-10 right-10 w-48 h-48 border-4 border-gray-300 rounded-full">
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <!-- Footer Decoration -->
+   <div class="absolute bottom-0 w-full h-3 flex">
+    <div class="h-full w-1/3 bg-blue-900">
+    </div>
+    <div class="h-full w-1/3 bg-teal-600">
+    </div>
+    <div class="h-full w-1/3 bg-blue-800">
+    </div>
+   </div>
+  </div>
+ </body>
+</html>

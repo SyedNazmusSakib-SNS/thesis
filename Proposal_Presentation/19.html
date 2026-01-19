@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Time-Aware Positional Encoding
+  </title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Roboto:wght@300;400;500;700&amp;family=Crimson+Text:ital,wght@0,400;0,600;1,400&amp;display=swap" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet"/>
+  <style>
+   body {
+            margin: 0;
+            padding: 0;
+            background-color: #f3f4f6;
+            font-family: 'Roboto', sans-serif;
+            overflow: hidden;
+        }
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            background-color: #ffffff;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+        }
+        .header-bg {
+            background-color: #0f172a; /* Navy Blue */
+        }
+        .text-accent-teal {
+            color: #0d9488;
+        }
+        .bg-accent-teal {
+            background-color: #0d9488;
+        }
+        
+        /* Equation Card Styling */
+        .equation-card {
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .equation-text {
+            font-family: 'Crimson Text', serif;
+            font-size: 1.75rem;
+            color: #1e293b;
+            line-height: 1.5;
+        }
+        
+        .variable {
+            font-style: italic;
+        }
+        
+        .math-symbol {
+            color: #64748b;
+        }
+        
+        .function-name {
+            color: #0f172a;
+            font-weight: 600;
+        }
+
+        /* Annotation Markers */
+        .annotation-line {
+            position: absolute;
+            background-color: #0d9488;
+            opacity: 0.6;
+        }
+        
+        .annotation-box {
+            position: absolute;
+            background-color: #f0fdfa;
+            border: 1px solid #0d9488;
+            color: #115e59;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            z-index: 10;
+        }
+        
+        .annotation-dot {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background-color: #0d9488;
+            border-radius: 50%;
+            z-index: 10;
+        }
+
+        .fraction {
+            display: inline-block;
+            text-align: center;
+            vertical-align: middle;
+            margin: 0 0.2em;
+        }
+        .fraction > span {
+            display: block;
+            padding: 0.1em;
+        }
+        .fraction span.numerator {
+            border-bottom: 2px solid #1e293b;
+        }
+        .fraction span.denominator {
+            border-top: 0px;
+        }
+
+        .highlight-bg {
+            background-color: #f1f5f9;
+        }
+  </style>
+ </head>
+ <body>
+  <div class="slide-container">
+   <!-- Header -->
+   <div class="header-bg w-full h-24 px-16 flex items-center justify-between shadow-md z-20 flex-shrink-0">
+    <div class="flex items-center space-x-4">
+     <div class="w-12 h-1 bg-teal-500 rounded-full">
+     </div>
+     <h1 class="text-3xl font-bold text-white tracking-wide">
+      Time-Aware Positional Encoding
+     </h1>
+    </div>
+    <div class="text-gray-400 text-sm font-medium">
+     Methodology | Slide 19
+    </div>
+   </div>
+   
+   <!-- Main Content -->
+   <div class="flex flex-1 w-full h-full p-12 space-x-12 bg-gray-50 relative z-10">
+    <!-- Left Column: Context (35%) -->
+    <div class="w-5/12 flex flex-col justify-center space-y-8">
+     <!-- Why Section -->
+     <div class="bg-white p-6 rounded-lg shadow-sm border-l-4 border-blue-600">
+      <h3 class="text-xl font-bold text-gray-800 mb-3 flex items-center">
+       <i class="fas fa-hourglass-half text-blue-500 mr-3">
+       </i>
+       Why Time Matters?
+      </h3>
+      <p class="text-gray-600 leading-relaxed">
+       The time interval (
+       <span class="font-serif italic font-bold">
+        Δt
+       </span>
+       ) between exams fundamentally alters clinical interpretation.
+       <br/>
+       <br/>
+       <span class="text-sm bg-blue-50 text-blue-800 px-2 py-1 rounded">
+        Example:
+       </span>
+       A nodule doubling in size over
+       <strong>
+        10 days
+       </strong>
+       (aggressive) vs.
+       <strong>
+        10 years
+       </strong>
+       (benign).
+      </p>
+     </div>
+     <!-- Method Section -->
+     <div class="bg-white p-6 rounded-lg shadow-sm border-l-4 border-teal-500">
+      <h3 class="text-xl font-bold text-gray-800 mb-3 flex items-center">
+       <i class="fas fa-code-branch text-teal-500 mr-3">
+       </i>
+       The Method
+      </h3>
+      <p class="text-gray-600 leading-relaxed">
+       We inject
+       <strong>
+        sinusoidal embeddings
+       </strong>
+       representing the specific time delta directly into the transformer, allowing the model to "feel" the passage of time continuously rather than in discrete steps.
+      </p>
+     </div>
+    </div>
+    <!-- Right Column: Equations (65%) -->
+    <div class="w-7/12 flex flex-col justify-center relative">
+     <!-- Equation Card -->
+     <div class="equation-card w-full p-10 rounded-xl relative bg-white">
+      <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-500 to-teal-500">
+      </div>
+      <!-- Equation 1 -->
+      <div class="mb-10 pl-4 relative">
+       <div class="equation-text">
+        <span class="function-name">
+         PE
+        </span>
+        (
+        <span class="variable text-teal-600 font-bold">
+         Δt
+        </span>
+        , 2
+        <span class="variable">
+         i
+        </span>
+        )
+        <span class="math-symbol">
+         =
+        </span>
+        <span class="function-name">
+         sin
+        </span>
+        <span class="math-symbol">
+         (
+        </span>
+        <div class="fraction">
+         <span class="numerator">
+          <span class="variable text-teal-600 font-bold">
+           Δt
+          </span>
+         </span>
+         <span class="denominator">
+          10000
+          <sup class="text-sm">
+           2
+           <span class="variable">
+            i
+           </span>
+           /
+           <span class="variable">
+            d
+           </span>
+          </sup>
+         </span>
+        </div>
+        <span class="math-symbol">
+         )
+        </span>
+       </div>
+       <!-- Annotation for Delta t -->
+       <div class="annotation-dot" style="top: -10px; left: 60px;">
+       </div>
+       <div class="annotation-line w-0.5 h-6 top-[-10px] left-[63px]">
+       </div>
+       <div class="annotation-box" style="top: -45px; left: 10px;">
+        Time Interval (Days)
+       </div>
+      </div>
+      <!-- Equation 2 -->
+      <div class="mb-12 pl-4">
+       <div class="equation-text">
+        <span class="function-name">
+         PE
+        </span>
+        (
+        <span class="variable text-teal-600 font-bold">
+         Δt
+        </span>
+        , 2
+        <span class="variable">
+         i
+        </span>
+        +1)
+        <span class="math-symbol">
+         =
+        </span>
+        <span class="function-name">
+         cos
+        </span>
+        <span class="math-symbol">
+         (
+        </span>
+        <div class="fraction">
+         <span class="numerator">
+          <span class="variable text-teal-600 font-bold">
+           Δt
+          </span>
+         </span>
+         <span class="denominator">
+          10000
+          <sup class="text-sm">
+           2
+           <span class="variable">
+            i
+           </span>
+           /
+           <span class="variable">
+            d
+           </span>
+          </sup>
+         </span>
+        </div>
+        <span class="math-symbol">
+         )
+        </span>
+       </div>
+      </div>
+      <!-- Divider -->
+      <div class="w-full h-px bg-gray-200 mb-8">
+      </div>
+      <!-- Integration Equation -->
+      <div class="pl-4 bg-gray-50 p-4 rounded border border-gray-100 relative">
+       <div class="absolute -left-3 top-1/2 transform -translate-y-1/2 w-1 h-12 bg-teal-500 rounded-full">
+       </div>
+       <div class="text-sm text-gray-500 font-bold uppercase mb-2 tracking-wider">
+        Feature Update Rule
+       </div>
+       <div class="equation-text">
+        <span class="variable font-bold">
+         Z
+        </span>
+        <sub>
+         Δ
+        </sub>
+        <span class="math-symbol">
+         ←
+        </span>
+        <span class="variable font-bold">
+         Z
+        </span>
+        <sub>
+         Δ
+        </sub>
+        <span class="math-symbol">
+         ⊕
+        </span>
+        <span class="variable">
+         W
+        </span>
+        <sub>
+         Δ
+        </sub>
+        <span class="math-symbol">
+         ·
+        </span>
+        <span class="function-name">
+         PE
+        </span>
+        (
+        <span class="variable text-teal-600">
+         Δt
+        </span>
+        )
+       </div>
+      </div>
+      <!-- Annotations for Feature Update -->
+      <div class="absolute bottom-20 right-10 text-right">
+       <p class="text-sm text-gray-400 italic">
+        <span class="variable font-bold">
+         Z
+        </span>
+        <sub>
+         Δ
+        </sub>
+        = Longitudinal Embedding
+       </p>
+      </div>
+     </div>
+     <!-- Caption -->
+     <div class="mt-4 flex items-center justify-center space-x-2 text-gray-500 text-sm">
+      <i class="fas fa-info-circle">
+      </i>
+      <p>
+       Adapted from standard Transformer positional encoding, replacing absolute position with relative time.
+      </p>
+     </div>
+    </div>
+   </div>
+   <!-- Footer Decoration -->
+   <div class="absolute bottom-0 w-full h-3 flex z-20">
+    <div class="h-full w-1/3 bg-blue-900">
+    </div>
+    <div class="h-full w-1/3 bg-teal-600">
+    </div>
+    <div class="h-full w-1/3 bg-blue-800">
+    </div>
+   </div>
+  </div>
+ </body>
+</html>

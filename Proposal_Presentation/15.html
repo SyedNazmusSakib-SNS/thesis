@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Critical Analysis of Prior Work
+  </title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Roboto:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet"/>
+  <style>
+   body {
+            margin: 0;
+            padding: 0;
+            background-color: #f3f4f6;
+            font-family: 'Roboto', sans-serif;
+            overflow: hidden;
+        }
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            background-color: #ffffff;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+        }
+        .header-bg {
+            background-color: #0f172a; /* Navy Blue */
+        }
+        .text-accent-teal {
+            color: #0d9488;
+        }
+        .bg-accent-teal {
+            background-color: #0d9488;
+        }
+        .rq-card {
+            transition: all 0.3s ease;
+            border-left-width: 6px;
+        }
+        .rq-card:hover {
+            transform: translateX(10px);
+            background-color: #f8fafc;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        .number-badge {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+        }
+        .check-vs-cross {
+            font-size: 0.9rem;
+        }
+  </style>
+ </head>
+ <body>
+  <div class="slide-container">
+   <!-- Header -->
+   <div class="header-bg w-full h-24 px-16 flex items-center justify-between shadow-md z-20 flex-shrink-0">
+    <div class="flex items-center space-x-4">
+     <div class="w-12 h-1 bg-teal-500 rounded-full">
+     </div>
+     <h1 class="text-3xl font-bold text-white tracking-wide">
+      Critical Analysis of Prior Work
+     </h1>
+    </div>
+    <div class="text-gray-400 text-sm font-medium">
+     Literature Review | Slide 15
+    </div>
+   </div>
+   
+   <!-- Main Content -->
+   <div class="flex flex-col flex-1 w-full h-full p-16 pt-8 bg-white relative z-10">
+    <div class="mb-4">
+     <p class="text-lg text-gray-500 font-light border-b border-gray-200 pb-2 inline-block">
+      Current radiology report generation models face three fundamental limitations that hinder clinical adoption:
+     </p>
+    </div>
+    <div class="flex-1 flex flex-col justify-center space-y-5">
+     <!-- Point 1: Snapshot Assumption -->
+     <div class="rq-card w-full bg-blue-50 border-blue-600 rounded-r-xl p-5 flex items-start group">
+      <div class="flex-shrink-0 mr-6">
+       <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center border-2 border-blue-200 shadow-sm group-hover:border-blue-600 transition-colors">
+        <span class="number-badge text-2xl text-blue-800">
+         01
+        </span>
+       </div>
+      </div>
+      <div class="flex-1">
+       <div class="flex items-center mb-1">
+        <span class="bg-blue-200 text-blue-900 text-xs font-bold px-2 py-1 rounded uppercase tracking-wider mr-3">
+         Temporal Flaw
+        </span>
+        <h3 class="text-xl font-bold text-gray-800">
+         The Snapshot Assumption
+        </h3>
+       </div>
+       <p class="text-lg text-gray-700 font-medium leading-relaxed mb-2">
+        <i class="fas fa-history text-blue-400 mr-2 opacity-50">
+        </i>
+        Approximately 90% of existing models ignore prior exams, treating each study as an independent event.
+       </p>
+       <div class="flex space-x-6 check-vs-cross text-sm bg-white p-2 rounded-lg bg-opacity-60 inline-flex">
+        <p class="text-red-600 font-semibold">
+         <i class="fas fa-times-circle mr-1">
+         </i>
+         Current: Cross-sectional only
+        </p>
+        <p class="text-teal-600 font-bold">
+         <i class="fas fa-check-circle mr-1">
+         </i>
+         Needed: Longitudinal Tracking
+        </p>
+       </div>
+      </div>
+     </div>
+     <!-- Point 2: Unstructured Inputs -->
+     <div class="rq-card w-full bg-teal-50 border-teal-500 rounded-r-xl p-5 flex items-start group">
+      <div class="flex-shrink-0 mr-6">
+       <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center border-2 border-teal-200 shadow-sm group-hover:border-teal-500 transition-colors">
+        <span class="number-badge text-2xl text-teal-700">
+         02
+        </span>
+       </div>
+      </div>
+      <div class="flex-1">
+       <div class="flex items-center mb-1">
+        <span class="bg-teal-200 text-teal-900 text-xs font-bold px-2 py-1 rounded uppercase tracking-wider mr-3">
+         Semantic Gap
+        </span>
+        <h3 class="text-xl font-bold text-gray-800">
+         Unstructured Visual Inputs
+        </h3>
+       </div>
+       <p class="text-lg text-gray-700 font-medium leading-relaxed mb-2">
+        <i class="fas fa-brain text-teal-400 mr-2 opacity-50">
+        </i>
+        Models process raw pixel data without "medical logic," missing the structured anatomical relationships required for reasoning.
+       </p>
+       <div class="flex space-x-6 check-vs-cross text-sm bg-white p-2 rounded-lg bg-opacity-60 inline-flex">
+        <p class="text-red-600 font-semibold">
+         <i class="fas fa-times-circle mr-1">
+         </i>
+         Current: Raw Pixels
+        </p>
+        <p class="text-teal-600 font-bold">
+         <i class="fas fa-check-circle mr-1">
+         </i>
+         Needed: Anatomical Graphs
+        </p>
+       </div>
+      </div>
+     </div>
+     <!-- Point 3: Metric Misalignment -->
+     <div class="rq-card w-full bg-gray-50 border-gray-600 rounded-r-xl p-5 flex items-start group">
+      <div class="flex-shrink-0 mr-6">
+       <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center border-2 border-gray-200 shadow-sm group-hover:border-gray-600 transition-colors">
+        <span class="number-badge text-2xl text-gray-700">
+         03
+        </span>
+       </div>
+      </div>
+      <div class="flex-1">
+       <div class="flex items-center mb-1">
+        <span class="bg-gray-200 text-gray-800 text-xs font-bold px-2 py-1 rounded uppercase tracking-wider mr-3">
+         Optimization
+        </span>
+        <h3 class="text-xl font-bold text-gray-800">
+         Metric Misalignment
+        </h3>
+       </div>
+       <p class="text-lg text-gray-700 font-medium leading-relaxed mb-2">
+        <i class="fas fa-ruler-combined text-gray-400 mr-2 opacity-50">
+        </i>
+        Optimization relies on text-overlap metrics (BLEU/ROUGE) rather than clinical factual correctness (e.g., F1-CheXpert).
+       </p>
+       <div class="flex space-x-6 check-vs-cross text-sm bg-white p-2 rounded-lg bg-opacity-60 inline-flex">
+        <p class="text-red-600 font-semibold">
+         <i class="fas fa-times-circle mr-1">
+         </i>
+         Current: N-gram Matching
+        </p>
+        <p class="text-teal-600 font-bold">
+         <i class="fas fa-check-circle mr-1">
+         </i>
+         Needed: Clinical Verified Correctness
+        </p>
+       </div>
+      </div>
+     </div>
+    </div>
+    <!-- Subtle background graphic -->
+    <div class="absolute right-10 top-1/2 transform -translate-y-1/2 opacity-5 z-0 pointer-events-none">
+     <i class="fas fa-microscope text-[400px]">
+     </i>
+    </div>
+   </div>
+   <!-- Footer Decoration -->
+   <div class="absolute bottom-0 w-full h-3 flex z-20">
+    <div class="h-full w-1/3 bg-blue-900">
+    </div>
+    <div class="h-full w-1/3 bg-teal-600">
+    </div>
+    <div class="h-full w-1/3 bg-blue-800">
+    </div>
+   </div>
+  </div>
+ </body>
+</html>

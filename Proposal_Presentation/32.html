@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Error Analysis (ReXErr)
+  </title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Roboto:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet"/>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js">
+  </script>
+  <style>
+   body {
+            margin: 0;
+            padding: 0;
+            background-color: #f3f4f6;
+            font-family: 'Roboto', sans-serif;
+            overflow: hidden;
+        }
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            background-color: #ffffff;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+        }
+        .header-bg {
+            background-color: #0f172a; /* Navy Blue */
+        }
+        .text-accent-teal {
+            color: #0d9488;
+        }
+        .bg-accent-teal {
+            background-color: #0d9488;
+        }
+        /* Table Styling for the Right Panel */
+        .custom-table {
+            border-collapse: separate;
+            border-spacing: 0;
+            width: 100%;
+        }
+        .custom-table th {
+            background-color: #1e293b;
+            color: #ffffff;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 12px;
+            font-size: 0.75rem;
+            border-bottom: 4px solid #0d9488;
+        }
+        .custom-table th:first-child {
+            border-top-left-radius: 8px;
+        }
+        .custom-table th:last-child {
+            border-top-right-radius: 8px;
+        }
+        .custom-table td {
+            padding: 12px;
+            border-bottom: 1px solid #e2e8f0;
+            color: #334155;
+            vertical-align: middle;
+            font-size: 0.9rem;
+        }
+        .custom-table tr:last-child td {
+            border-bottom: none;
+        }
+        .custom-table tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+        
+        /* Chart Container */
+        .chart-wrapper {
+            position: relative;
+            height: 100%;
+            width: 100%;
+        }
+  </style>
+ </head>
+ <body>
+  <div class="slide-container">
+   <!-- Header -->
+   <div class="header-bg w-full h-24 px-16 flex items-center justify-between shadow-md z-20 flex-shrink-0">
+    <div class="flex items-center space-x-4">
+     <div class="w-12 h-1 bg-teal-500 rounded-full">
+     </div>
+     <h1 class="text-3xl font-bold text-white tracking-wide">
+      Error Analysis (ReXErr)
+     </h1>
+    </div>
+    <div class="text-gray-400 text-sm font-medium">
+     Preliminary Results | Slide 32
+    </div>
+   </div>
+   
+   <!-- Main Content -->
+   <div class="flex flex-col flex-1 w-full h-full p-12 bg-white relative z-10">
+    <!-- Intro Text -->
+    <div class="mb-6 max-w-5xl">
+     <p class="text-gray-600 text-lg leading-relaxed">
+      Analysis of the ReXErr dataset reveals dominant failure modes in current models. Our methodology specifically targets these high-frequency errors through
+      <span class="font-bold text-teal-600">
+       severity-aware loss functions
+      </span>
+      and DPO.
+     </p>
+    </div>
+    <!-- Content Split: Chart vs Data Table -->
+    <div class="flex flex-1 gap-8 overflow-hidden mb-4">
+     <!-- Left: Visualization (Chart) -->
+     <div class="w-7/12 bg-white rounded-xl shadow-lg border border-gray-200 p-6 flex flex-col relative">
+      <div class="absolute top-0 right-0 bg-gray-100 text-gray-400 text-xs font-mono px-2 py-1 rounded-bl border-b border-l border-gray-200 z-10">
+       Figure 11: Distribution of Radiology Report Error Types
+      </div>
+      <h3 class="text-lg font-bold text-slate-800 mb-4 flex items-center">
+       <i class="fas fa-chart-bar text-teal-600 mr-2">
+       </i>
+       Error Frequency Distribution
+      </h3>
+      <div class="chart-wrapper">
+       <canvas id="errorChart">
+       </canvas>
+      </div>
+     </div>
+     <!-- Right: Strategic Response (Table Style) -->
+     <div class="w-5/12 bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden flex flex-col">
+      <table class="custom-table w-full h-full">
+       <thead>
+        <tr>
+         <th class="w-1/2">
+          Dominant Error Type
+         </th>
+         <th class="w-1/2">
+          Mitigation Strategy
+         </th>
+        </tr>
+       </thead>
+       <tbody>
+        <tr>
+         <td>
+          <div class="flex items-center">
+           <div class="w-6 h-6 rounded-full bg-red-100 text-red-600 flex items-center justify-center mr-2 text-xs">
+            <i class="fas fa-times">
+            </i>
+           </div>
+           <span class="font-bold text-slate-700">
+            False Predictions
+           </span>
+          </div>
+          <p class="text-xs text-gray-500 mt-1 pl-8">
+           Hallucinated objects/attributes
+          </p>
+         </td>
+         <td>
+          <span class="text-xs font-semibold text-teal-700 bg-teal-50 px-2 py-1 rounded border border-teal-100">
+           DPO (ReXErr Penalty)
+          </span>
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <div class="flex items-center">
+           <div class="w-6 h-6 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center mr-2 text-xs">
+            <i class="fas fa-eye-slash">
+            </i>
+           </div>
+           <span class="font-bold text-slate-700">
+            False Negatives
+           </span>
+          </div>
+          <p class="text-xs text-gray-500 mt-1 pl-8">
+           Missed critical findings
+          </p>
+         </td>
+         <td>
+          <span class="text-xs font-semibold text-blue-700 bg-blue-50 px-2 py-1 rounded border border-blue-100">
+           Diagnostic Weighting
+          </span>
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <div class="flex items-center">
+           <div class="w-6 h-6 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center mr-2 text-xs">
+            <i class="fas fa-microscope">
+            </i>
+           </div>
+           <span class="font-bold text-slate-700">
+            Device Hallucination
+           </span>
+          </div>
+          <p class="text-xs text-gray-500 mt-1 pl-8">
+           Fabricated tubes/lines
+          </p>
+         </td>
+         <td>
+          <span class="text-xs font-semibold text-purple-700 bg-purple-50 px-2 py-1 rounded border border-purple-100">
+           Object-Level Constraints
+          </span>
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <div class="flex items-center">
+           <div class="w-6 h-6 rounded-full bg-yellow-100 text-yellow-600 flex items-center justify-center mr-2 text-xs">
+            <i class="fas fa-history">
+            </i>
+           </div>
+           <span class="font-bold text-slate-700">
+            Temporal Inconsistency
+           </span>
+          </div>
+          <p class="text-xs text-gray-500 mt-1 pl-8">
+           Incorrect change description
+          </p>
+         </td>
+         <td>
+          <span class="text-xs font-semibold text-indigo-700 bg-indigo-50 px-2 py-1 rounded border border-indigo-100">
+           Diff-VQA Verification
+          </span>
+         </td>
+        </tr>
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <!-- Bottom Insight -->
+    <div class="mt-2 p-4 bg-gray-50 border-l-4 border-slate-700 rounded-r-lg flex items-start">
+     <i class="fas fa-bullseye text-teal-600 text-xl mr-4 mt-1">
+     </i>
+     <div>
+      <h4 class="font-bold text-slate-800 text-sm uppercase">
+       Strategic Implication
+      </h4>
+      <p class="text-sm text-gray-600 mt-1">
+       We calibrate our training objective
+       <span class="font-mono text-xs bg-gray-200 px-1 rounded">
+        L_total
+       </span>
+       to heavily penalize
+       <b>
+        False Negatives
+       </b>
+       and
+       <b>
+        Temporal Inconsistencies
+       </b>
+       , as these pose the highest clinical risk compared to stylistic errors.
+      </p>
+     </div>
+    </div>
+   </div>
+   <!-- Footer Decoration -->
+   <div class="absolute bottom-0 w-full h-3 flex">
+    <div class="h-full w-1/3 bg-blue-900">
+    </div>
+    <div class="h-full w-1/3 bg-teal-600">
+    </div>
+    <div class="h-full w-1/3 bg-blue-800">
+    </div>
+   </div>
+  </div>
+  <script>
+   const ctx = document.getElementById('errorChart').getContext('2d');
+    const errorChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['False Predictions', 'False Negatives', 'Device Hallucination', 'Temporal Error', 'Incorrect Location', 'Stylistic/Other'],
+            datasets: [{
+                label: 'Error Frequency (%)',
+                data: [32, 24, 15, 14, 10, 5],
+                backgroundColor: [
+                    '#ef4444', // Red for False Pred
+                    '#f97316', // Orange for False Neg
+                    '#a855f7', // Purple for Device
+                    '#0d9488', // Teal for Temporal (Key Focus)
+                    '#3b82f6', // Blue for Location
+                    '#94a3b8'  // Grey for Other
+                ],
+                borderColor: [
+                    '#b91c1c',
+                    '#c2410c',
+                    '#7e22ce',
+                    '#0f766e',
+                    '#1d4ed8',
+                    '#64748b'
+                ],
+                borderWidth: 1,
+                borderRadius: 4,
+                barPercentage: 0.7
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: false
+                },
+                tooltip: {
+                    backgroundColor: '#1e293b',
+                    titleFont: { family: 'Montserrat', size: 13 },
+                    bodyFont: { family: 'Roboto', size: 12 },
+                    padding: 10,
+                    callbacks: {
+                        label: function(context) {
+                            return context.parsed.y + '% Frequency';
+                        }
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 40,
+                    grid: {
+                        color: '#f1f5f9'
+                    },
+                    ticks: {
+                        font: { family: 'Roboto' },
+                        color: '#64748b',
+                        callback: function(value) { return value + "%" }
+                    },
+                    title: {
+                        display: true,
+                        text: 'Frequency in Dataset',
+                        color: '#94a3b8',
+                        font: { size: 10 }
+                    }
+                },
+                x: {
+                    grid: {
+                        display: false
+                    },
+                    ticks: {
+                        font: { family: 'Roboto', weight: '500', size: 10 },
+                        color: '#334155'
+                    }
+                }
+            }
+        }
+    });
+  </script>
+ </body>
+</html>
