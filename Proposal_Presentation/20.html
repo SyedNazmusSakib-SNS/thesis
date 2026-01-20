@@ -88,139 +88,92 @@
    </div>
    
    <!-- Main Content -->
-   <div class="flex flex-1 w-full h-full p-16 pt-12 space-x-12 bg-white">
-    <!-- Left Column: Text Content (60%) -->
-    <div class="w-3/5 flex flex-col justify-center pr-8">
-     <!-- Graph Construction -->
-     <div class="mb-10">
-      <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
-       <i class="fas fa-share-nodes text-teal-600 mr-3 text-xl">
-       </i>
-       Building the Graph
-      </h2>
-      <div class="pl-2">
-       <div class="bullet-point">
-        <p class="text-lg text-gray-700 font-medium">
-         Nodes = Anatomy &amp; Findings
-        </p>
-        <p class="text-base text-gray-500 mt-1">
-         Representing distinct medical entities (e.g., "Left Lower Lobe", "Nodule").
-        </p>
-       </div>
-       <div class="bullet-point">
-        <p class="text-lg text-gray-700 font-medium">
-         Edges = Semantic Relations
-        </p>
-        <p class="text-base text-gray-500 mt-1">
-         Defining spatial and logical connections (e.g.,
-         <span class="italic text-teal-700">
-          located_in
-         </span>
-         ,
-         <span class="italic text-teal-700">
-          adjacent_to
-         </span>
-         ).
-        </p>
-       </div>
-      </div>
+   <div class="flex flex-1 w-full h-full p-12 pt-8 space-x-8 bg-white overflow-hidden">
+    <!-- Left Column: Text Content (55%) -->
+    <div class="w-7/12 flex flex-col justify-center pr-4">
+     
+     <!-- Top Section: Graph Concepts -->
+     <div class="grid grid-cols-2 gap-4 mb-4">
+        <!-- Building the Graph -->
+        <div>
+          <h2 class="text-lg font-bold text-gray-800 mb-2 flex items-center">
+           <i class="fas fa-share-nodes text-teal-600 mr-2 text-base"></i>
+           Building the Graph
+          </h2>
+          <div class="space-y-2 pl-1">
+           <div class="leading-tight">
+            <p class="text-sm text-gray-700 font-bold">Nodes</p>
+            <p class="text-xs text-gray-500">Anatomy &amp; Findings (e.g., "Nodule")</p>
+           </div>
+           <div class="leading-tight">
+            <p class="text-sm text-gray-700 font-bold">Edges</p>
+            <p class="text-xs text-gray-500">Relations (e.g., <span class="italic">located_in</span>)</p>
+           </div>
+          </div>
+        </div>
+
+        <!-- Temporal Alignment -->
+        <div>
+          <h2 class="text-lg font-bold text-gray-800 mb-2 flex items-center">
+           <i class="fas fa-history text-blue-800 mr-2 text-base"></i>
+           Temporal Alignment
+          </h2>
+          <p class="text-xs text-gray-600 leading-snug border-l-2 border-blue-100 pl-2">
+           Match nodes between Prior ($G_p$) and Current ($G_c$) graphs to track regions.
+          </p>
+        </div>
      </div>
-     <!-- Temporal Alignment -->
-     <div class="mb-10">
-      <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
-       <i class="fas fa-history text-blue-800 mr-3 text-xl">
-       </i>
-       Temporal Alignment
-      </h2>
-      <p class="text-lg text-gray-600 leading-relaxed pl-8 border-l-4 border-blue-100">
-       We establish correspondence by matching nodes between the Prior Graph (
-       <span class="font-bold text-blue-900">
-        G
-        <sub>
-         p
-        </sub>
-       </span>
-       ) and the Current Graph (
-       <span class="font-bold text-blue-900">
-        G
-        <sub>
-         c
-        </sub>
-       </span>
-       ) to track specific anatomical regions over time.
-      </p>
-     </div>
-     <!-- Change Vectors -->
-     <div>
-      <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
-       <i class="fas fa-vector-square text-indigo-600 mr-3 text-xl">
-       </i>
+
+     <!-- Middle Section: Change Vectors -->
+     <div class="mb-4">
+      <h2 class="text-lg font-bold text-gray-800 mb-2 flex items-center">
+       <i class="fas fa-vector-square text-indigo-600 mr-2 text-base"></i>
        Change Vectors
       </h2>
-      <div class="ml-8">
-       <p class="text-base text-gray-600 mb-2">
-        We compute a difference vector for specific nodes to quantify evolution (e.g., pleural effusion size):
-       </p>
-       <div class="formula-box shadow-sm">
-        <p class="text-lg font-bold">
-         Δg
-         <sub>
-          k
-         </sub>
-         = g
-         <sub>
-          k
-         </sub>
-         <sup>
-          c
-         </sup>
-         − g
-         <sub>
-          k
-         </sub>
-         <sup>
-          p
-         </sup>
-        </p>
+      <div class="flex items-center space-x-4 ml-6">
+       <p class="text-xs text-gray-600">Difference vector to quantify evolution:</p>
+       <div class="bg-indigo-50 px-3 py-1 rounded border border-indigo-100 text-indigo-900 font-mono text-xs font-bold">
+        Δg_k = g_k^c − g_k^p
        </div>
       </div>
      </div>
+
+     <!-- Bottom Section: Goal & Core Techniques (New) -->
+     <div class="bg-gray-50 rounded-lg p-3 border border-gray-200">
+        <div class="flex space-x-6">
+            <!-- The Goal -->
+            <div class="w-1/2">
+                <h3 class="text-sm font-bold text-gray-800 mb-1 flex items-center">
+                    <i class="fas fa-bullseye text-teal-600 mr-2"></i>The Goal
+                </h3>
+                <p class="text-xs text-gray-600 leading-snug pl-5">
+                    Capture <strong>"What changed"</strong> (content) and <strong>"When"</strong> (temporal context).
+                </p>
+            </div>
+            <!-- Core Techniques -->
+            <div class="w-1/2 border-l border-gray-200 pl-4">
+                <h3 class="text-sm font-bold text-gray-800 mb-1 flex items-center">
+                    <i class="fas fa-microchip text-blue-600 mr-2"></i>Core Techniques
+                </h3>
+                <ul class="text-xs text-gray-600 space-y-1 pl-5 list-disc">
+                    <li><strong>Shared Encoder:</strong> Extracts $F_p, F_c$.</li>
+                    <li><strong>Differencing:</strong> ΔF = $F_c - F_p$.</li>
+                    <li><strong>Cross-Attention:</strong> Spatial correlation.</li>
+                </ul>
+            </div>
+        </div>
+     </div>
+
     </div>
-    <!-- Right Column: Visual Placeholder (40%) -->
-    <div class="w-2/5 h-full py-4">
-     <div class="placeholder-box relative overflow-hidden group hover:border-blue-400 transition-colors duration-300">
-      <!-- Visual Icon -->
-      <div class="w-24 h-24 bg-indigo-50 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-       <i class="fas fa-project-diagram text-indigo-500 text-4xl">
-       </i>
-      </div>
-      <!-- Label -->
-      <h3 class="text-xl font-bold text-gray-700 mb-2">
-       Figure 5: Graph Integration
-      </h3>
-      <p class="text-sm text-gray-500 text-center px-8 mb-6">
-       Place diagram showing:
-       <br/>
-       <strong>
-        Prior Graph (G
-        <sub>
-         p
-        </sub>
-        ) vs Current Graph (G
-        <sub>
-         c
-        </sub>
-        )
-       </strong>
-       <br/>
-       <span class="text-xs text-gray-400 mt-2 block">
-        with change-vector arrows connecting corresponding nodes
-       </span>
-      </p>
-      <!-- Placeholder Indicator -->
-      <div class="absolute bottom-4 right-4 text-xs text-gray-400 font-mono bg-white px-2 py-1 rounded border border-gray-200">
-       VISUAL PLACEHOLDER
-      </div>
+    <!-- Right Column: Visual Images (45%) -->
+    <div class="w-5/12 h-full py-2 flex flex-col space-y-4">
+     <!-- Top Image -->
+     <div class="flex-1 bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden p-2 flex items-center justify-center">
+      <img alt="Graph Construction" class="object-contain max-h-full max-w-full" src="../images/20.png"/>
+     </div>
+     <!-- Bottom Image -->
+     <div class="flex-1 bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden p-2 flex items-center justify-center">
+      <img alt="Temporal Alignment" class="object-contain max-h-full max-w-full" src="../images/20_2.png"/>
      </div>
     </div>
    </div>

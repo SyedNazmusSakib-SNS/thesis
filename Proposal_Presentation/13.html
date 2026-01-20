@@ -47,24 +47,25 @@
         .custom-table th {
             background-color: #1e293b;
             color: #ffffff;
-            font-weight: 600;
+            font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.05em;
-            padding: 16px;
-            font-size: 0.85rem;
+            padding: 18px 24px;  /* Increased padding */
+            font-size: 0.9rem;   /* Larger font */
             border-bottom: 4px solid #0d9488;
         }
         .custom-table th:first-child {
-            border-top-left-radius: 8px;
+            border-top-left-radius: 12px;
         }
         .custom-table th:last-child {
-            border-top-right-radius: 8px;
+            border-top-right-radius: 12px;
         }
         .custom-table td {
-            padding: 16px;
+            padding: 16px 24px;  /* Increased padding */
             border-bottom: 1px solid #e2e8f0;
             color: #334155;
             vertical-align: middle;
+            font-size: 0.95rem;  /* Larger font */
         }
         .custom-table tr:last-child td {
             border-bottom: none;
@@ -78,11 +79,14 @@
         .risk-badge {
             display: inline-flex;
             align-items: center;
-            padding: 4px 12px;
+            justify-content: center;
+            padding: 6px 14px;
             border-radius: 9999px;
             font-size: 0.75rem;
-            font-weight: 700;
+            font-weight: 800;
             text-transform: uppercase;
+            letter-spacing: 0.05em;
+            min-width: 80px;
         }
         .risk-critical {
             background-color: #fee2e2;
@@ -118,9 +122,9 @@
    </div>
    
    <!-- Main Content -->
-   <div class="flex flex-col flex-1 w-full h-full p-12 bg-white relative z-10">
+   <div class="flex flex-col flex-1 w-full h-full p-12 bg-white relative z-10 overflow-hidden">
     <!-- Intro Text -->
-    <div class="mb-8 max-w-5xl">
+    <div class="mb-8 max-w-6xl">
      <p class="text-gray-600 text-lg leading-relaxed">
       Medical VLMs are prone to generating unsupported findings. In radiology, these hallucinations are not just linguistic errors but represent
       <span class="font-bold text-red-600">
@@ -129,27 +133,17 @@
       .
      </p>
     </div>
-    <!-- Table Container (Visual Placeholder Style) -->
-    <div class="flex-1 overflow-hidden relative">
-     <div class="absolute top-0 right-0 bg-gray-100 text-gray-400 text-xs font-mono px-2 py-1 rounded border border-gray-200 z-10">
-      Figure 3: Taxonomy of Hallucinations
-     </div>
+    
+    <!-- Table Container -->
+    <div class="flex-1 w-full relative mb-4">
      <div class="w-full h-full bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden flex flex-col">
-      <table class="custom-table w-full">
+      <table class="custom-table w-full h-full">
        <thead>
         <tr>
-         <th class="w-1/4">
-          Hallucination Type
-         </th>
-         <th class="w-1/3">
-          Definition
-         </th>
-         <th class="w-1/3">
-          Clinical Risk
-         </th>
-         <th class="w-1/12 text-center">
-          Severity
-         </th>
+         <th class="w-[22%]">Hallucination Type</th>
+         <th class="w-[38%]">Definition</th>
+         <th class="w-[30%]">Clinical Risk</th>
+         <th class="w-[10%] text-center">Severity</th>
         </tr>
        </thead>
        <tbody>
@@ -157,169 +151,76 @@
         <tr>
          <td>
           <div class="flex items-center">
-           <div class="w-8 h-8 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center mr-3">
-            <i class="fas fa-plus">
-            </i>
+           <div class="w-8 h-8 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center mr-3 shadow-sm">
+            <i class="fas fa-plus text-sm"></i>
            </div>
-           <span class="font-bold text-slate-700">
-            False Positive
-           </span>
+           <span class="font-bold text-slate-700 text-base">False Positive</span>
           </div>
          </td>
-         <td>
-          <p class="text-sm">
-           Reporting a finding (e.g., nodule, effusion) that is not present in the image.
-          </p>
-         </td>
-         <td>
-          <p class="text-sm font-medium text-slate-600">
-           Unnecessary treatment, radiation exposure from follow-up CTs, patient anxiety.
-          </p>
-         </td>
-         <td class="text-center">
-          <span class="risk-badge risk-high">
-           High
-          </span>
-         </td>
+         <td class="leading-snug">Reporting a finding (e.g., nodule) not present in the image.</td>
+         <td class="text-slate-600 leading-snug">Unnecessary treatment, radiation exposure, anxiety.</td>
+         <td class="text-center"><span class="risk-badge risk-high">High</span></td>
         </tr>
         <!-- Row 2 -->
         <tr>
          <td>
           <div class="flex items-center">
-           <div class="w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center mr-3">
-            <i class="fas fa-map-marker-alt">
-            </i>
+           <div class="w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center mr-3 shadow-sm">
+            <i class="fas fa-map-marker-alt text-sm"></i>
            </div>
-           <span class="font-bold text-slate-700">
-            Incorrect Localization
-           </span>
+           <span class="font-bold text-slate-700 text-base">Incorrect Localization</span>
           </div>
          </td>
-         <td>
-          <p class="text-sm">
-           Correct finding attributed to the wrong anatomical region (e.g., Left vs Right).
-          </p>
-         </td>
-         <td>
-          <p class="text-sm font-medium text-slate-600">
-           Procedural errors (e.g., wrong-side thoracentesis), incorrect surgical planning.
-          </p>
-         </td>
-         <td class="text-center">
-          <span class="risk-badge risk-high">
-           High
-          </span>
-         </td>
+         <td class="leading-snug">Attributing finding to wrong region (e.g., Left vs Right).</td>
+         <td class="text-slate-600 leading-snug">Procedural errors, incorrect surgical planning.</td>
+         <td class="text-center"><span class="risk-badge risk-high">High</span></td>
         </tr>
         <!-- Row 3 -->
         <tr>
          <td>
           <div class="flex items-center">
-           <div class="w-8 h-8 rounded-full bg-yellow-100 text-yellow-600 flex items-center justify-center mr-3">
-            <i class="fas fa-thermometer-half">
-            </i>
+           <div class="w-8 h-8 rounded-full bg-yellow-100 text-yellow-600 flex items-center justify-center mr-3 shadow-sm">
+            <i class="fas fa-thermometer-half text-sm"></i>
            </div>
-           <span class="font-bold text-slate-700">
-            Severity Distortion
-           </span>
+           <span class="font-bold text-slate-700 text-base">Severity Distortion</span>
           </div>
          </td>
-         <td>
-          <p class="text-sm">
-           Misrepresenting the extent or size of a finding (e.g., "Mild" vs "Severe" edema).
-          </p>
-         </td>
-         <td>
-          <p class="text-sm font-medium text-slate-600">
-           Misjudgment of disease course urgency; delayed escalation of care.
-          </p>
-         </td>
-         <td class="text-center">
-          <span class="risk-badge risk-medium">
-           Medium
-          </span>
-         </td>
+         <td class="leading-snug">Misrepresenting extent/size (e.g., "Mild" vs "Severe").</td>
+         <td class="text-slate-600 leading-snug">Misjudgment of urgency; delayed escalation.</td>
+         <td class="text-center"><span class="risk-badge risk-medium">Medium</span></td>
         </tr>
         <!-- Row 4 -->
         <tr>
          <td>
           <div class="flex items-center">
-           <div class="w-8 h-8 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center mr-3">
-            <i class="fas fa-microscope">
-            </i>
+           <div class="w-8 h-8 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center mr-3 shadow-sm">
+            <i class="fas fa-microscope text-sm"></i>
            </div>
-           <span class="font-bold text-slate-700">
-            Device Hallucination
-           </span>
+           <span class="font-bold text-slate-700 text-base">Device Hallucination</span>
           </div>
          </td>
-         <td>
-          <p class="text-sm">
-           Fabricating medical devices (e.g., tubes, pacemakers) not present in the patient.
-          </p>
-         </td>
-         <td>
-          <p class="text-sm font-medium text-slate-600">
-           Confusion about patient status; assuming intubation when patient is breathing spontaneously.
-          </p>
-         </td>
-         <td class="text-center">
-          <span class="risk-badge risk-medium">
-           Medium
-          </span>
-         </td>
+         <td class="leading-snug">Fabricating medical devices (e.g., tubes) not present.</td>
+         <td class="text-slate-600 leading-snug">Confusion about patient status (e.g., intubation).</td>
+         <td class="text-center"><span class="risk-badge risk-medium">Medium</span></td>
         </tr>
         <!-- Row 5 (Highlighted) -->
-        <tr class="bg-teal-50 border-l-4 border-teal-500">
-         <td>
+        <tr class="bg-teal-50/50 border-l-4 border-teal-500">
+         <td class="pl-[20px]"> <!-- Adjust padding for border -->
           <div class="flex items-center">
-           <div class="w-8 h-8 rounded-full bg-teal-100 text-teal-600 flex items-center justify-center mr-3">
-            <i class="fas fa-clock">
-            </i>
+           <div class="w-8 h-8 rounded-full bg-teal-100 text-teal-600 flex items-center justify-center mr-3 shadow-sm">
+            <i class="fas fa-clock text-sm"></i>
            </div>
-           <span class="font-bold text-teal-900">
-            Temporal Hallucination
-           </span>
+           <span class="font-bold text-teal-900 text-base">Temporal Hallucination</span>
           </div>
          </td>
-         <td>
-          <p class="text-sm text-teal-900">
-           Fabricating a change (e.g., "worsening pneumonia") when the condition is stable.
-          </p>
-         </td>
-         <td>
-          <p class="text-sm font-bold text-red-700">
-           Critical longitudinal misinterpretation; changing therapy based on false progression.
-          </p>
-         </td>
-         <td class="text-center">
-          <span class="risk-badge risk-critical">
-           Critical
-          </span>
-         </td>
+         <td class="text-teal-900 leading-snug font-medium">Fabricating change (e.g., "worsening") when stable.</td>
+         <td class="text-red-700 font-bold leading-snug">Critical longitudinal misinterpretation; wrong therapy.</td>
+         <td class="text-center"><span class="risk-badge risk-critical">High</span></td>
         </tr>
        </tbody>
       </table>
      </div>
     </div>
-    <!-- Bottom Insight -->
-    <div class="mt-6 p-4 bg-gray-50 border-l-4 border-slate-700 rounded-r-lg flex items-start">
-     <i class="fas fa-lightbulb text-yellow-500 text-xl mr-4 mt-1">
-     </i>
-     <div>
-      <h4 class="font-bold text-slate-800 text-sm uppercase">
-       Key Research Insight
-      </h4>
-      <p class="text-sm text-gray-600 mt-1">
-       Current metrics (BLEU/ROUGE) often fail to capture these errors. Our approach specifically targets
-       <span class="font-bold text-teal-600">
-        Temporal Hallucinations
-       </span>
-       via differential verification.
-      </p>
-     </div>
-    </div>
-   </div>
    <!-- Footer Decoration -->
    <div class="absolute bottom-0 w-full h-3 flex">
     <div class="h-full w-1/3 bg-blue-900">
