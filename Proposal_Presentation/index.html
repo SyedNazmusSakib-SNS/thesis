@@ -86,45 +86,43 @@
     </main>
 
 <script>
-    const totalSlides = 34;
+    const totalSlides = 32;
     let currentSlide = 1;
 
-    // Slide Titles (Optional: Extracted from file analysis or generic)
+    // Slide Titles (Updated after deleting slides 5 & 6)
     const titles = {
         1: "Title Slide", 
-        2: "Introduction: Why CXRs Matter",
+        2: "Background: Evolution to Generalist AI",
         3: "Need for Automated RRG",
         4: "Current Limitations",
-        5: "Motivation: Hallucination Crisis",
-        6: "Problem Statement",
-        7: "Research Objectives",
-        8: "Research Questions",
-        9: "Literature: Evolution of VLMs",
-        10: "Literature: SOTA Analysis",
-        11: "Lit: Longitudinal Reasoning",
-        12: "Lit: Structured Representations",
-        13: "Lit: Hallucination Depth",
-        14: "Lit: Verification Mechanisms",
-        15: "Lit: Critical Analysis",
-        16: "Research Gap Summary",
-        17: "Methodology: Framework Overview",
-        18: "Method: Longitudinal Learning",
-        19: "Method: Time-Aware PE",
-        20: "Method: Structured Graph",
-        21: "Method: GNN Propagation",
-        22: "Method: Multimodal Fusion",
-        23: "Method: Report Generation",
-        24: "Method: Hallucination Mitigation",
-        25: "Method: Optimization",
-        26: "Method: Severity-Aware Training",
-        27: "Results: Dataset Composition",
-        28: "Results: Cohort Characteristics",
-        29: "Results: Linguistic Variability",
-        30: "Results: Supervision Coverage",
-        31: "Results: Differential Reasoning",
-        32: "Results: Error Analysis",
-        33: "Conclusion",
-        34: "Conclusion (Duplicate)"
+        5: "Research Objectives",
+        6: "Research Questions",
+        7: "Literature: Evolution of VLMs",
+        8: "Literature: SOTA Analysis",
+        9: "Lit: Longitudinal Reasoning",
+        10: "Lit: Structured Representations",
+        11: "Lit: Hallucination Depth",
+        12: "Lit: Verification Mechanisms",
+        13: "Lit: Critical Analysis",
+        14: "Research Gap Summary",
+        15: "Methodology: Framework Overview",
+        16: "Method: Longitudinal Learning",
+        17: "Method: Time-Aware PE",
+        18: "Method: Structured Graph",
+        19: "Method: GNN Propagation",
+        20: "Method: Multimodal Fusion",
+        21: "Method: Report Generation",
+        22: "Method: Hallucination Mitigation",
+        23: "Method: Optimization",
+        24: "Method: Severity-Aware Training",
+        25: "Results: Dataset Composition",
+        26: "Results: Cohort Characteristics",
+        27: "Results: Linguistic Variability",
+        28: "Results: Supervision Coverage",
+        29: "Results: Differential Reasoning",
+        30: "Results: Error Analysis",
+        31: "Conclusion",
+        32: "Conclusion (Duplicate)"
     };
 
     function init() {
@@ -143,10 +141,11 @@
             div.dataset.index = i;
             
             const title = titles[i] || `Slide ${i}`;
+            const fileNum = i < 5 ? i : i + 2;
             
             div.innerHTML = `
                 <span class="font-semibold truncate">${title}</span>
-                <span class="text-xs opacity-60 mt-0.5">slide ${i}.html</span>
+                <span class="text-xs opacity-60 mt-0.5">slide ${fileNum}.html</span>
             `;
             
             container.appendChild(div);
@@ -157,9 +156,12 @@
         if (index < 1 || index > totalSlides) return;
         currentSlide = index;
 
+        // Determine file number (skip 5 and 6)
+        const fileNum = index < 5 ? index : index + 2;
+
         // Update Iframe
         const iframe = document.getElementById('slideFrame');
-        iframe.src = `${index}.html`;
+        iframe.src = `${fileNum}.html`;
 
         // Update UI
         updateActiveState();

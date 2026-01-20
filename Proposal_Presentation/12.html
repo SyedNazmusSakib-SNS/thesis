@@ -81,7 +81,7 @@
  <body>
   <div class="slide-container">
    <!-- Header -->
-   <div class="header-bg w-full h-24 px-16 flex items-center justify-between shadow-md z-20 flex-shrink-0">
+   <div class="header-bg w-full h-20 px-14 flex items-center justify-between shadow-md z-20 flex-shrink-0">
     <div class="flex items-center space-x-4">
      <div class="w-12 h-1 bg-teal-500 rounded-full">
      </div>
@@ -95,17 +95,17 @@
    </div>
    
    <!-- Main Content -->
-   <div class="flex flex-1 w-full h-full p-16 pt-10 space-x-12 bg-white">
+   <div class="flex flex-1 w-full h-full p-12 space-x-8 bg-white overflow-hidden relative z-10">
     <!-- Left Column: Text Content (60%) -->
-    <div class="w-3/5 flex flex-col justify-center pr-4">
+    <div class="w-3/5 flex flex-col justify-center pr-2">
      <!-- Concept -->
-     <div class="mb-8">
-      <h2 class="text-2xl font-bold text-gray-800 mb-3 flex items-center">
-       <i class="fas fa-project-diagram text-teal-600 mr-3 text-xl">
+     <div class="mb-4">
+      <h2 class="text-xl font-bold text-gray-800 mb-2 flex items-center">
+       <i class="fas fa-project-diagram text-teal-600 mr-2 text-lg">
        </i>
        The Concept: Scene Graphs
       </h2>
-      <p class="text-lg text-gray-600 mb-4 pl-1">
+      <p class="text-sm text-gray-600 mb-3 pl-1 leading-snug">
        Representing medical findings as structured graphs composed of
        <strong>
         Entities
@@ -116,39 +116,39 @@
        </strong>
        (edges), rather than unstructured text.
       </p>
-      <div class="flex items-center bg-gray-50 p-3 rounded-lg border border-gray-200 w-max">
-       <span class="node-box">
+      <div class="flex items-center bg-gray-50 p-2 rounded-lg border border-gray-200 w-max scale-90 origin-left">
+       <span class="node-box text-xs">
         Nodule
        </span>
-       <span class="arrow-text">
+       <span class="arrow-text text-xs">
         ⎯ located_in →
        </span>
-       <span class="node-box">
+       <span class="node-box text-xs">
         Right Upper Lobe
        </span>
       </div>
      </div>
      <!-- Benefits -->
-     <div class="mb-8">
-      <h2 class="text-2xl font-bold text-gray-800 mb-3 flex items-center">
-       <i class="fas fa-cubes text-blue-800 mr-3 text-xl">
+     <div class="mb-4">
+      <h2 class="text-xl font-bold text-gray-800 mb-2 flex items-center">
+       <i class="fas fa-cubes text-blue-800 mr-2 text-lg">
        </i>
        Key Benefits
       </h2>
       <div class="pl-2">
-       <div class="bullet-point">
-        <p class="text-lg text-gray-700 font-medium">
+       <div class="bullet-point mb-2">
+        <p class="text-base text-gray-700 font-medium">
          Beyond Pixel-to-Text
         </p>
-        <p class="text-base text-gray-500 mt-1">
+        <p class="text-xs text-gray-500 mt-0.5">
          Moves away from "black box" captioning to explicit semantic representation.
         </p>
        </div>
-       <div class="bullet-point">
-        <p class="text-lg text-gray-700 font-medium">
+       <div class="bullet-point mb-0">
+        <p class="text-base text-gray-700 font-medium">
          Anatomical Scaffold
         </p>
-        <p class="text-base text-gray-500 mt-1">
+        <p class="text-xs text-gray-500 mt-0.5">
          Provides a rigid structure that grounds visual features in known anatomy.
         </p>
        </div>
@@ -156,62 +156,30 @@
      </div>
      <!-- Limitations -->
      <div>
-      <h2 class="text-2xl font-bold text-gray-800 mb-3 flex items-center">
-       <i class="fas fa-exclamation-circle text-red-500 mr-3 text-xl">
+      <h2 class="text-xl font-bold text-gray-800 mb-2 flex items-center">
+       <i class="fas fa-exclamation-circle text-red-500 mr-2 text-lg">
        </i>
        Current Limitation
       </h2>
-      <div class="bg-red-50 p-4 rounded-lg border-l-4 border-red-400 shadow-sm">
-       <p class="text-lg text-gray-800 font-medium">
+      <div class="bg-red-50 p-3 rounded-lg border-l-4 border-red-400 shadow-sm">
+       <p class="text-base text-gray-800 font-medium">
         Static Representations
        </p>
-       <p class="text-base text-gray-600 mt-1">
-        Existing graph approaches (e.g.,
-        <em>
-         RadGraph
-        </em>
-        ) are
-        <strong>
-         static
-        </strong>
-        . They capture a single moment but fail to model how the graph structure
-        <em>
-         evolves
-        </em>
-        or
-        <em>
-         changes
-        </em>
-        over time.
+       <p class="text-xs text-gray-600 mt-0.5 leading-snug">
+        Existing approaches (e.g., <em>RadGraph</em>) are <strong>static</strong>. They capture a single moment but fail to model how the graph structure <em>evolves</em> over time.
        </p>
       </div>
      </div>
     </div>
-    <!-- Right Column: Visual Placeholder (40%) -->
-    <div class="w-2/5 h-full py-2">
-     <div class="placeholder-box relative overflow-hidden group hover:border-blue-400 transition-colors duration-300">
-      <!-- Visual Icon -->
-      <div class="w-24 h-24 bg-teal-100 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-       <i class="fas fa-share-alt text-teal-600 text-4xl">
-       </i>
-      </div>
-      <!-- Label -->
-      <h3 class="text-xl font-bold text-gray-700 mb-2">
-       Scene Graph Diagram
-      </h3>
-      <p class="text-sm text-gray-500 text-center px-8 mb-6 leading-relaxed">
-       Place a diagram showing Nodes (Anatomy/Pathology) connected by Edges (Relations).
-       <br/>
-       <br/>
-       <strong>
-        Critical Note:
-       </strong>
-       Add a visual annotation indicating "Static in prior work" (e.g., a frozen clock or static snapshot icon).
-      </p>
-      <!-- Placeholder Indicator -->
-      <div class="absolute bottom-4 right-4 text-xs text-gray-400 font-mono bg-white px-2 py-1 rounded border border-gray-200">
-       VISUAL PLACEHOLDER | FIGURE 2 (PANEL 3)
-      </div>
+    <!-- Right Column: Visual Images (40%) -->
+    <div class="w-2/5 h-full flex flex-col space-y-4 py-2">
+     <!-- Image 1 -->
+     <div class="flex-1 flex items-center justify-center bg-white rounded-lg border border-gray-100 shadow-sm overflow-hidden p-1">
+      <img alt="Chest X-Ray Anatomy Analysis" class="object-contain max-h-full max-w-full" src="../images/12_1.jpg"/>
+     </div>
+     <!-- Image 2 -->
+     <div class="flex-1 flex items-center justify-center bg-white rounded-lg border border-gray-100 shadow-sm overflow-hidden p-1">
+      <img alt="Temporal Graph Evolution Diagram" class="object-contain max-h-full max-w-full" src="../images/12_2.jpg"/>
      </div>
     </div>
    </div>
