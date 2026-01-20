@@ -70,133 +70,39 @@
    </div>
    
    <!-- Main Content -->
-   <div class="flex flex-1 w-full h-full p-12 bg-white relative z-10">
-    <!-- Left Column: Content (55%) -->
-    <div class="w-7/12 flex flex-col justify-between pr-8">
-     <!-- Summary Statement -->
-     <div class="mb-8">
-      <h3 class="text-gray-500 font-bold uppercase tracking-wider text-sm mb-2">
-       The Paradigm Shift
-      </h3>
-      <p class="text-2xl text-gray-800 font-light leading-snug">
-       We propose a framework moving from
-       <span class="font-bold text-gray-500 line-through decoration-red-400 decoration-2">
-        Snapshot Captioning
-       </span>
-       to
-       <span class="font-bold text-teal-700">
-        Longitudinal Clinical Reasoning
-       </span>
-       .
-      </p>
-     </div>
-     <!-- Key Contributions -->
-     <div class="space-y-6 flex-1 flex flex-col justify-center">
-      <h3 class="text-gray-800 font-bold text-lg mb-2 border-b border-gray-200 pb-2 w-max">
-       Key Contributions
-      </h3>
-      <!-- Contribution 1 -->
-      <div class="contribution-card border-blue-600 p-4 shadow-sm rounded-r-lg">
-       <div class="flex items-start">
-        <div class="flex-shrink-0 w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 mr-4">
-         <i class="fas fa-network-wired">
-         </i>
-        </div>
-        <div>
-         <h4 class="font-bold text-gray-800 text-lg">
-          Differential Longitudinal Graph Transformer
-         </h4>
-         <p class="text-sm text-gray-600 mt-1">
-          Explicitly modeling interval changes and anatomical evolution over time.
-         </p>
-        </div>
-       </div>
-      </div>
-      <!-- Contribution 2 -->
-      <div class="contribution-card border-teal-500 p-4 shadow-sm rounded-r-lg">
-       <div class="flex items-start">
-        <div class="flex-shrink-0 w-10 h-10 bg-teal-100 rounded-full flex items-center justify-center text-teal-600 mr-4">
-         <i class="fas fa-check-double">
-         </i>
-        </div>
-        <div>
-         <h4 class="font-bold text-gray-800 text-lg">
-          Verification-Guided Inference
-         </h4>
-         <p class="text-sm text-gray-600 mt-1">
-          Integrating Reinforcement Learning and Differential VQA to mitigate hallucinations.
-         </p>
-        </div>
-       </div>
-      </div>
-      <!-- Contribution 3 -->
-      <div class="contribution-card border-indigo-500 p-4 shadow-sm rounded-r-lg">
-       <div class="flex items-start">
-        <div class="flex-shrink-0 w-10 h-10 bg-indigo-100 rounded-full flex items-center justify-center text-indigo-600 mr-4">
-         <i class="fas fa-weight-hanging">
-         </i>
-        </div>
-        <div>
-         <h4 class="font-bold text-gray-800 text-lg">
-          Severity-Aware Training
-         </h4>
-         <p class="text-sm text-gray-600 mt-1">
-          Prioritizing clinically significant diagnostic errors over stylistic mismatches.
-         </p>
-        </div>
-       </div>
-      </div>
-     </div>
-     <!-- Impact Statement -->
-     <div class="mt-8 impact-box p-5 rounded-lg border-l-4 border-l-teal-600">
-      <div class="flex items-center">
-       <i class="fas fa-rocket text-teal-600 text-2xl mr-4">
-       </i>
-       <div>
-        <h4 class="font-bold text-teal-900 text-sm uppercase">
-         Clinical Impact
-        </h4>
-        <p class="text-lg text-teal-800 font-medium italic">
-         "Bridging the gap between AI outputs and trustworthy, longitudinal clinical practice."
-        </p>
-       </div>
-      </div>
-     </div>
+   <!-- Main Content -->
+   <div class="flex flex-1 w-full h-full flex-col items-center justify-center bg-white relative z-10 p-16 text-center">
+    <!-- Proposal Summary -->
+    <div class="max-w-5xl mb-16 relative">
+     <!-- Decorative Quote Marks -->
+     <i class="fas fa-quote-left absolute -top-8 -left-8 text-4xl text-gray-200"></i>
+     <p class="text-2xl text-gray-700 leading-relaxed font-light">
+      We propose a framework moving from <span class="font-bold text-blue-900">Snapshot Captioning</span> 
+      to <span class="font-bold text-teal-600">Longitudinal Clinical Reasoning</span> 
+      with structured <span class="font-semibold text-gray-800">Scene Graph Representation</span> based learning, 
+      followed by <span class="font-semibold text-gray-800">Reinforcement Learning</span> based preference tuning for hallucination and error mitigation, 
+      and finally Test-time <span class="font-semibold text-gray-800">Agentic Guidance and Steering</span> 
+      by iterative <span class="font-semibold text-gray-800">Visual Question Answering</span> 
+      to generate a clinically meaningful and correct Radiology report, 
+      moving towards <span class="font-bold text-indigo-700">Generalist Medical AI</span>.
+     </p>
+     <i class="fas fa-quote-right absolute -bottom-8 -right-8 text-4xl text-gray-200"></i>
     </div>
-    <!-- Right Column: Visual Placeholder (45%) -->
-    <div class="w-5/12 pl-4 flex flex-col h-full">
-     <div class="flex-1 w-full bg-gray-50 border-2 border-dashed border-gray-300 rounded-xl flex flex-col items-center justify-center relative group hover:border-blue-400 transition-colors">
-      <div class="absolute top-4 right-4 bg-white border border-gray-200 text-gray-400 text-xs font-mono px-2 py-1 rounded">
-       VISUAL PLACEHOLDER: SUMMARY GRAPHIC
-      </div>
-      <!-- Placeholder Graphic Representation -->
-      <div class="w-64 h-64 relative flex items-center justify-center">
-       <!-- Center Circle -->
-       <div class="w-32 h-32 bg-white border-4 border-teal-500 rounded-full flex items-center justify-center z-10 shadow-lg">
-        <i class="fas fa-file-medical-alt text-4xl text-teal-600">
-        </i>
-       </div>
-       <!-- Orbiting Nodes -->
-       <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center border-2 border-blue-400 shadow">
-        <i class="fas fa-clock text-blue-600">
-        </i>
-       </div>
-       <div class="absolute bottom-0 right-0 w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center border-2 border-indigo-400 shadow">
-        <i class="fas fa-shield-alt text-indigo-600">
-        </i>
-       </div>
-       <div class="absolute bottom-0 left-0 w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center border-2 border-purple-400 shadow">
-        <i class="fas fa-project-diagram text-purple-600">
-        </i>
-       </div>
-       <!-- Connecting Lines (CSS only representation) -->
-       <div class="absolute inset-0 border-2 border-gray-200 rounded-full scale-125 opacity-50 pointer-events-none">
-       </div>
-      </div>
-      <p class="mt-8 text-gray-500 text-sm text-center max-w-xs">
-       Place a summary graphic here that visually unifies the three main contributions (Model, Verification, Training).
-      </p>
-     </div>
+
+    <div class="flex flex-col items-center space-y-6">
+        <!-- Thank You -->
+        <div>
+            <h2 class="text-7xl font-extrabold text-blue-900 tracking-tight drop-shadow-sm">Thank You</h2>
+        </div>
+
+        <!-- Divider -->
+        <div class="w-24 h-1 bg-gradient-to-r from-blue-900 to-teal-500 rounded-full"></div>
+
+        <!-- Questions -->
+        <div class="flex items-center space-x-3 text-teal-700 mt-2">
+            <i class="fas fa-question-circle text-3xl animate-bounce"></i>
+            <h3 class="text-3xl font-bold">Any Questions?</h3>
+        </div>
     </div>
    </div>
    <!-- Footer Decoration -->

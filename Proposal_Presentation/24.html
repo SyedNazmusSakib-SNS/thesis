@@ -38,65 +38,6 @@
         .bg-accent-teal {
             background-color: #0d9488;
         }
-        
-        /* Flow Diagram Styling */
-        .flow-step {
-            transition: all 0.3s ease;
-            position: relative;
-            z-index: 10;
-        }
-        
-        .arrow-connector {
-            position: relative;
-            height: 4px;
-            background-color: #cbd5e1;
-            flex: 1;
-            margin: 0 8px;
-            border-radius: 2px;
-        }
-        
-        .arrow-connector::after {
-            content: '';
-            position: absolute;
-            right: -2px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 0; 
-            height: 0; 
-            border-top: 8px solid transparent;
-            border-bottom: 8px solid transparent;
-            border-left: 12px solid #cbd5e1;
-        }
-        
-        .tech-pill {
-            display: inline-flex;
-            align-items: center;
-            padding: 4px 12px;
-            border-radius: 9999px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            background-color: #f1f5f9;
-            color: #475569;
-            border: 1px solid #e2e8f0;
-            margin-right: 8px;
-            margin-bottom: 8px;
-        }
-        
-        .stack-card {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: white;
-            border: 1px solid #e2e8f0;
-            border-radius: 0.5rem;
-            top: 0;
-            left: 0;
-            transition: transform 0.3s ease;
-        }
-        
-        .k-stack:hover .stack-card:nth-child(1) { transform: rotate(-5deg) translate(-5px, -2px); }
-        .k-stack:hover .stack-card:nth-child(2) { transform: rotate(5deg) translate(5px, -2px); }
-        .k-stack:hover .stack-card:nth-child(3) { transform: translateY(-5px); }
   </style>
  </head>
  <body>
@@ -116,22 +57,22 @@
    </div>
    
    <!-- Main Content -->
-   <div class="flex flex-col flex-1 w-full h-full p-12 bg-white relative z-10">
-    <!-- Top Section: Context -->
-    <div class="flex justify-between mb-8 space-x-8">
+   <div class="flex flex-1 w-full h-full p-12 bg-white relative z-10 space-x-8">
+    <!-- Left Column: Text Cards -->
+    <div class="w-1/2 flex flex-col justify-center space-y-6">
      <!-- Approach Card -->
-     <div class="w-1/2 bg-gray-50 border-l-4 border-blue-500 p-6 rounded-r-lg shadow-sm">
-      <h3 class="text-lg font-bold text-blue-900 mb-2 flex items-center">
-       <i class="fas fa-layer-group text-blue-500 mr-2">
+     <div class="w-full bg-gray-50 border-l-4 border-blue-500 p-6 rounded-r-lg shadow-sm">
+      <h3 class="text-xl font-bold text-blue-900 mb-3 flex items-center">
+       <i class="fas fa-layer-group text-blue-500 mr-3">
        </i>
        Two-Stage Approach
       </h3>
-      <div class="flex flex-col space-y-2">
+      <div class="flex flex-col space-y-3">
        <div class="flex items-start">
-        <span class="bg-blue-200 text-blue-800 text-xs font-bold px-2 py-0.5 rounded mr-2 mt-0.5">
+        <span class="bg-blue-200 text-blue-800 text-xs font-bold px-2 py-0.5 rounded mr-2 mt-1">
          1
         </span>
-        <p class="text-gray-700 text-sm">
+        <p class="text-gray-700 text-base">
          <strong>
           Generation:
          </strong>
@@ -143,10 +84,10 @@
         </p>
        </div>
        <div class="flex items-start">
-        <span class="bg-teal-200 text-teal-800 text-xs font-bold px-2 py-0.5 rounded mr-2 mt-0.5">
+        <span class="bg-teal-200 text-teal-800 text-xs font-bold px-2 py-0.5 rounded mr-2 mt-1">
          2
         </span>
-        <p class="text-gray-700 text-sm">
+        <p class="text-gray-700 text-base">
          <strong>
           Verification:
          </strong>
@@ -156,17 +97,17 @@
       </div>
      </div>
      <!-- Components Card -->
-     <div class="w-1/2 bg-teal-50 border-l-4 border-teal-500 p-6 rounded-r-lg shadow-sm">
-      <h3 class="text-lg font-bold text-teal-900 mb-2 flex items-center">
-       <i class="fas fa-shield-virus text-teal-500 mr-2">
+     <div class="w-full bg-teal-50 border-l-4 border-teal-500 p-6 rounded-r-lg shadow-sm">
+      <h3 class="text-xl font-bold text-teal-900 mb-3 flex items-center">
+       <i class="fas fa-shield-virus text-teal-500 mr-3">
        </i>
        Core Components
       </h3>
-      <div class="flex flex-col space-y-2">
+      <div class="flex flex-col space-y-3">
        <div class="flex items-start">
-        <i class="fas fa-check-circle text-teal-500 mt-1 mr-2 text-xs">
+        <i class="fas fa-check-circle text-teal-500 mt-1.5 mr-2 text-sm">
         </i>
-        <p class="text-gray-700 text-sm">
+        <p class="text-gray-700 text-base">
          <strong>
           ReXErr Scoring:
          </strong>
@@ -174,9 +115,9 @@
         </p>
        </div>
        <div class="flex items-start">
-        <i class="fas fa-check-circle text-teal-500 mt-1 mr-2 text-xs">
+        <i class="fas fa-check-circle text-teal-500 mt-1.5 mr-2 text-sm">
         </i>
-        <p class="text-gray-700 text-sm">
+        <p class="text-gray-700 text-base">
          <strong>
           Diff-VQA:
          </strong>
@@ -186,135 +127,17 @@
       </div>
      </div>
     </div>
-    <!-- Process Flow Diagram Container -->
-    <div class="flex-1 bg-white border border-gray-200 rounded-xl p-6 relative flex flex-col justify-center shadow-inner bg-opacity-50">
-     <div class="absolute top-4 right-4 bg-gray-100 text-gray-400 text-xs font-mono px-2 py-1 rounded border border-gray-200">
-      FIGURE 7: VERIFICATION PIPELINE
-     </div>
-     <!-- The Flow -->
-     <div class="flex items-center justify-between px-4 relative mt-4">
-      <!-- Step 1: K Candidates -->
-      <div class="flow-step flex flex-col items-center group w-32">
-       <div class="w-20 h-24 relative k-stack mb-4 cursor-default">
-        <div class="stack-card bg-white shadow-sm border-gray-300 transform rotate-3 z-0">
-        </div>
-        <div class="stack-card bg-white shadow-md border-gray-300 transform -rotate-2 z-10">
-        </div>
-        <div class="stack-card bg-blue-50 shadow-lg border-blue-200 flex items-center justify-center z-20">
-         <span class="text-2xl font-bold text-blue-600">
-          K
-         </span>
-        </div>
-        <div class="absolute -bottom-2 -right-2 bg-blue-600 text-white text-xs px-2 py-1 rounded-full shadow font-bold">
-         Drafts
-        </div>
-       </div>
-       <h4 class="font-bold text-gray-800 text-sm">
-        Generation
-       </h4>
-       <p class="text-center text-xs text-gray-500 mt-1">
-        Produce Candidates
-       </p>
-      </div>
-      <!-- Arrow 1 -->
-      <div class="arrow-connector">
-      </div>
-      <!-- Step 2: Preference Scoring -->
-      <div class="flow-step flex flex-col items-center group w-36">
-       <div class="w-20 h-20 bg-orange-50 border-2 border-orange-200 rounded-xl shadow-sm flex flex-col items-center justify-center mb-4 relative">
-        <i class="fas fa-balance-scale text-orange-400 text-2xl mb-1">
-        </i>
-        <div class="w-12 h-1 bg-gray-200 rounded mb-1">
-         <div class="bg-orange-400 h-1 rounded w-2/3">
-         </div>
-        </div>
-       </div>
-       <h4 class="font-bold text-gray-800 text-sm">
-        ReXErr Scoring
-       </h4>
-       <p class="text-center text-xs text-gray-500 mt-1">
-        Error Pattern Penalty
-       </p>
-      </div>
-      <!-- Arrow 2 -->
-      <div class="arrow-connector">
-      </div>
-      <!-- Step 3: Diff-VQA -->
-      <div class="flow-step flex flex-col items-center group w-36">
-       <div class="w-20 h-20 bg-purple-50 border-2 border-purple-200 rounded-xl shadow-sm flex flex-col items-center justify-center mb-4 relative">
-        <i class="fas fa-search-plus text-purple-500 text-2xl mb-1">
-        </i>
-        <div class="absolute -top-2 -right-2 bg-purple-600 text-white w-6 h-6 flex items-center justify-center rounded-full text-xs shadow">
-         ?
-        </div>
-       </div>
-       <h4 class="font-bold text-gray-800 text-sm">
-        Diff-VQA Check
-       </h4>
-       <p class="text-center text-xs text-gray-500 mt-1">
-        "Is effusion larger?"
-       </p>
-      </div>
-      <!-- Arrow 3 -->
-      <div class="arrow-connector">
-      </div>
-      <!-- Step 4: Re-ranking -->
-      <div class="flow-step flex flex-col items-center group w-36">
-       <div class="w-20 h-20 bg-white border-2 border-gray-300 rounded-xl shadow-sm flex flex-col items-center justify-center mb-4">
-        <i class="fas fa-sort-amount-down text-gray-400 text-2xl mb-1">
-        </i>
-        <div class="flex space-x-1 mt-1">
-         <div class="w-1 h-3 bg-gray-300 rounded-full">
-         </div>
-         <div class="w-1 h-5 bg-teal-500 rounded-full">
-         </div>
-         <div class="w-1 h-2 bg-gray-300 rounded-full">
-         </div>
-        </div>
-       </div>
-       <h4 class="font-bold text-gray-800 text-sm">
-        Re-ranking
-       </h4>
-       <p class="text-center text-xs text-gray-500 mt-1">
-        Filter Low Quality
-       </p>
-      </div>
-      <!-- Arrow 4 -->
-      <div class="arrow-connector bg-teal-200">
-      </div>
-      <!-- Step 5: Final Output -->
-      <div class="flow-step flex flex-col items-center group w-32">
-       <div class="w-20 h-24 bg-gradient-to-b from-teal-500 to-teal-700 rounded-lg shadow-lg flex flex-col items-center justify-center mb-4 border border-teal-600 relative">
-        <div class="absolute top-2 right-2 text-white opacity-50">
-         <i class="fas fa-check">
-         </i>
-        </div>
-        <i class="fas fa-file-medical text-white text-3xl mb-2">
-        </i>
-        <div class="w-10 h-1 bg-white opacity-40 rounded">
-        </div>
-       </div>
-       <h4 class="font-bold text-gray-800 text-sm">
-        Final Report
-       </h4>
-       <p class="text-center text-xs text-teal-600 mt-1 font-bold">
-        Verified Output
-       </p>
-      </div>
-     </div>
-     <!-- Labels -->
-     <div class="flex justify-between px-16 mt-4">
-      <div class="text-xs font-mono text-blue-500 bg-blue-50 px-2 py-1 rounded border border-blue-100 uppercase tracking-wide">
-       Stage 1: Generation
-      </div>
-      <div class="flex-1 border-b border-dashed border-gray-300 mx-4 mb-2">
-      </div>
-      <div class="text-xs font-mono text-teal-600 bg-teal-50 px-2 py-1 rounded border border-teal-100 uppercase tracking-wide">
-       Stage 2: Verification &amp; Refinement
-      </div>
+    <!-- Right Column: Images -->
+    <!-- <div class="w-1/2 flex flex-col space-y-4 h-full">
+     <div class="flex-1 bg-gray-50 rounded-lg border border-gray-200 flex items-center justify-center overflow-hidden p-2 min-h-0">
+      <img alt="Hallucination Example 1" class="object-contain w-full h-full" src="../images/hall.jpg"/>
+     </div> -->
+     <div class="flex-1 bg-gray-50 rounded-lg border border-gray-200 flex items-center justify-center overflow-hidden p-2 min-h-0">
+      <img alt="Hallucination Example 2" class="object-contain w-full h-full" src="../images/hall_2.png"/>
      </div>
     </div>
    </div>
+
    <!-- Footer Decoration -->
    <div class="absolute bottom-0 w-full h-3 flex z-20">
     <div class="h-full w-1/3 bg-blue-900">
