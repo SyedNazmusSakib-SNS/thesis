@@ -4,7 +4,7 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   Structured Representations (Scene Graphs)
+   Lack of Structured Representation Learning
   </title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Roboto:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
@@ -35,47 +35,6 @@
         .accent-teal {
             color: #0d9488;
         }
-        .bullet-point {
-            position: relative;
-            padding-left: 24px;
-            margin-bottom: 16px;
-        }
-        .bullet-point::before {
-            content: "\f054";
-            font-family: "Font Awesome 6 Free";
-            font-weight: 900;
-            position: absolute;
-            left: 0;
-            top: 5px;
-            color: #0d9488;
-            font-size: 14px;
-        }
-        .placeholder-box {
-            background-color: #f8fafc;
-            border: 2px dashed #cbd5e1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
-            border-radius: 12px;
-            color: #64748b;
-        }
-        .node-box {
-            background-color: #e0f2fe;
-            color: #0369a1;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            border: 1px solid #bae6fd;
-        }
-        .arrow-text {
-            color: #64748b;
-            font-size: 0.8rem;
-            margin: 0 8px;
-            font-style: italic;
-        }
   </style>
  </head>
  <body>
@@ -85,8 +44,8 @@
     <div class="flex items-center space-x-4">
      <div class="w-12 h-1 bg-teal-500 rounded-full">
      </div>
-     <h1 class="text-3xl font-bold text-white tracking-wide">
-      Structured Representations
+     <h1 class="text-2xl font-bold text-white tracking-wide">
+      Lack of Structured Representation Learning
      </h1>
     </div>
     <div class="text-gray-400 text-sm font-medium">
@@ -95,79 +54,85 @@
    </div>
    
    <!-- Main Content -->
-   <div class="flex flex-1 w-full h-full p-12 space-x-8 bg-white overflow-hidden relative z-10">
+   <div class="flex flex-1 w-full h-full p-8 space-x-6 bg-white overflow-hidden relative z-10">
     <!-- Left Column: Text Content (60%) -->
-    <div class="w-3/5 flex flex-col justify-center pr-2">
-     <!-- Concept -->
+    <div class="w-3/5 flex flex-col justify-start pr-2 overflow-y-auto">
+     <!-- Section A -->
      <div class="mb-4">
-      <h2 class="text-xl font-bold text-gray-800 mb-2 flex items-center">
-       <i class="fas fa-project-diagram text-teal-600 mr-2 text-lg">
-       </i>
-       The Concept: Scene Graphs
+      <h2 class="text-base font-bold text-gray-800 mb-2 flex items-center">
+       <span class="w-6 h-6 bg-blue-900 text-white rounded-full flex items-center justify-center text-xs font-bold mr-2">A</span>
+       Unstructured RRG Models
       </h2>
-      <p class="text-sm text-gray-600 mb-3 pl-1 leading-snug">
-       Representing medical findings as structured graphs composed of
-       <strong>
-        Entities
-       </strong>
-       (nodes) and
-       <strong>
-        Relations
-       </strong>
-       (edges), rather than unstructured text.
-      </p>
-      <div class="flex items-center bg-gray-50 p-2 rounded-lg border border-gray-200 w-max scale-90 origin-left">
-       <span class="node-box text-xs">
-        Nodule
-       </span>
-       <span class="arrow-text text-xs">
-        ⎯ located_in →
-       </span>
-       <span class="node-box text-xs">
-        Right Upper Lobe
-       </span>
-      </div>
-     </div>
-     <!-- Benefits -->
-     <div class="mb-4">
-      <h2 class="text-xl font-bold text-gray-800 mb-2 flex items-center">
-       <i class="fas fa-cubes text-blue-800 mr-2 text-lg">
-       </i>
-       Key Benefits
-      </h2>
-      <div class="pl-2">
-       <div class="bullet-point mb-2">
-        <p class="text-base text-gray-700 font-medium">
-         Beyond Pixel-to-Text
+      <div class="pl-8 space-y-2">
+       <!-- Bullet 1 -->
+       <div class="bg-gray-50 p-2 rounded-lg border-l-4 border-teal-500">
+        <p class="text-sm text-gray-800 font-semibold mb-1">
+         R2Gen <span class="font-normal text-gray-600">(Chen et al.)</span>
         </p>
-        <p class="text-xs text-gray-500 mt-0.5">
-         Moves away from "black box" captioning to explicit semantic representation.
+        <p class="text-xs text-gray-600 leading-relaxed mb-1">
+         Memory-driven Transformer for report generation; produces coherent reports but relies on unstructured visual embeddings and token-level decoding.
         </p>
+        <div class="flex items-start">
+         <i class="fas fa-exclamation-triangle text-amber-500 mr-2 mt-0.5 text-xs"></i>
+         <p class="text-xs text-amber-700">
+          <strong>Limitation:</strong> No explicit entity grounding or claim verification; prone to fluent but unsupported statements.
+         </p>
+        </div>
        </div>
-       <div class="bullet-point mb-0">
-        <p class="text-base text-gray-700 font-medium">
-         Anatomical Scaffold
+       <!-- Bullet 2 -->
+       <div class="bg-gray-50 p-2 rounded-lg border-l-4 border-teal-500">
+        <p class="text-sm text-gray-800 font-semibold mb-1">
+         R2GenGPT / Visual–LLM Alignment <span class="font-normal text-gray-600">(Wang et al.)</span>
         </p>
-        <p class="text-xs text-gray-500 mt-0.5">
-         Provides a rigid structure that grounds visual features in known anatomy.
+        <p class="text-xs text-gray-600 leading-relaxed mb-1">
+         Aligns visual features with frozen LLMs to boost language fluency.
         </p>
+        <div class="flex items-start">
+         <i class="fas fa-exclamation-triangle text-amber-500 mr-2 mt-0.5 text-xs"></i>
+         <p class="text-xs text-amber-700">
+          <strong>Limitation:</strong> Better fluency and alignment but still lacks systematic verification and temporal/longitudinal grounding.
+         </p>
+        </div>
        </div>
       </div>
      </div>
-     <!-- Limitations -->
+     <!-- Section B -->
      <div>
-      <h2 class="text-xl font-bold text-gray-800 mb-2 flex items-center">
-       <i class="fas fa-exclamation-circle text-red-500 mr-2 text-lg">
-       </i>
-       Current Limitation
+      <h2 class="text-base font-bold text-gray-800 mb-2 flex items-center">
+       <span class="w-6 h-6 bg-teal-600 text-white rounded-full flex items-center justify-center text-xs font-bold mr-2">B</span>
+       Structured or Graph-Based Efforts (but Static)
       </h2>
-      <div class="bg-red-50 p-3 rounded-lg border-l-4 border-red-400 shadow-sm">
-       <p class="text-base text-gray-800 font-medium">
-        Static Representations
-       </p>
-       <p class="text-xs text-gray-600 mt-0.5 leading-snug">
-        Existing approaches (e.g., <em>RadGraph</em>) are <strong>static</strong>. They capture a single moment but fail to model how the graph structure <em>evolves</em> over time.
-       </p>
+      <div class="pl-8 space-y-2">
+       <!-- Bullet 1 -->
+       <div class="bg-gray-50 p-2 rounded-lg border-l-4 border-blue-800">
+        <p class="text-sm text-gray-800 font-semibold mb-1">
+         RadGraph <span class="font-normal text-gray-600">(Jain et al.)</span>
+        </p>
+        <p class="text-xs text-gray-600 leading-relaxed mb-1">
+         Expert-annotated entity–relation graphs from radiology reports enabling structured supervision.
+        </p>
+        <div class="flex items-start">
+         <i class="fas fa-exclamation-triangle text-amber-500 mr-2 mt-0.5 text-xs"></i>
+         <p class="text-xs text-amber-700">
+          <strong>Limitation:</strong> Graphs are text-derived and largely static; do not model entity evolution across exams nor ensure image-grounded claims.
+         </p>
+        </div>
+       </div>
+       <!-- Bullet 2 -->
+       <div class="bg-gray-50 p-2 rounded-lg border-l-4 border-blue-800">
+        <p class="text-sm text-gray-800 font-semibold mb-1">
+         Chest ImaGenome <span class="font-normal text-gray-600">(Wu et al.)</span>
+        </p>
+        <p class="text-xs text-gray-600 leading-relaxed mb-1">
+         Large scene-graph dataset linking image regions to structured tags and some comparison relations.
+        </p>
+        <div class="flex items-start">
+         <i class="fas fa-exclamation-triangle text-amber-500 mr-2 mt-0.5 text-xs"></i>
+         <p class="text-xs text-amber-700">
+          <strong>Limitation:</strong> Provides scene graphs but limited longitudinal alignment and limited end-to-end image-to-graph temporal reasoning in current models.
+         </p>
+        </div>
+       </div>
       </div>
      </div>
     </div>
